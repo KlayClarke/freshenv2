@@ -1,4 +1,3 @@
-import "./App.css";
 import { useState, useEffect, useRef } from "react";
 
 function App() {
