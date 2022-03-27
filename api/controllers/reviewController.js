@@ -27,10 +27,42 @@ exports.review_detail = function (req, res, next) {
 };
 
 // create review
-exports.review_create = function (req, res) {};
+exports.review_create = [
+  body("body").trim().isLength({ min: 1 }).escape(),
+  body("rating").trim().escape(),
+  body("author").trim().escape(),
+  (req, res, next) => {
+    const errors = validationResult(req);
+    let review = new Review({
+      body: req.body.body,
+      rating: req.body.rating,
+      author: req.body.author,
+    });
+    if (!errors.isEmpty()) return res.send(errors.array());
+    review.save(function (err) {
+      if (err) return next(err);
+      return res.send("Review successfully created");
+    });
+  },
+];
 
 // update review
 exports.review_update = function (req, res) {};
 
 // delete review
-exports.review_delete = function (req, res) {};
+exports.review_delete = function (req, res) {
+  async.parallel(
+    {
+      review: function (callback) {
+        Review.findById(req.params.reviewid).exec(callback);
+      },
+    },
+    function (err, results) {
+      if (err) return next(err);
+      Review.findByIdAndDelete(req.params.reviewid, function () {
+        if (err) return next(err);
+        return res.send("Review successfully deleted.");
+      });
+    }
+  );
+};
