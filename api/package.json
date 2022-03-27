@@ -8,6 +8,7 @@
     "serverstart": "DEBUG=api:* npm run devstart"
   },
   "dependencies": {
+    "@mapbox/mapbox-sdk": "^0.13.3",
     "async": "^3.2.3",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
