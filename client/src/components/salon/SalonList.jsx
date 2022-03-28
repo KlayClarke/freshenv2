@@ -22,10 +22,13 @@ function SalonList() {
   } else {
     return (
       <div>
+        <h1 className="page-header">Salons</h1>
         <ul>
           {salons.map((salon) => (
             <li key={salon._id}>
-              <Link to={`/salons/${salon._id}`}>{salon.name}</Link>
+              <div className="salon-card">
+                <Link to={`/salons/${salon._id}`}>{salon.name}</Link>
+              </div>
             </li>
           ))}
         </ul>
