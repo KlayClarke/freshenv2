@@ -1,0 +1,158 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Fira Sans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.5rem;
+  border-bottom: 1px solid rgb(201, 201, 201);
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+}
+
+nav ul:first-child {
+  margin-left: 30px;
+}
+
+nav ul:nth-child(2) {
+  margin-right: 30px;
+}
+
+nav ul li {
+  color: coral;
+}
+
+main {
+  background-color: rgb(246, 246, 246);
+  height: calc(100vh - 12rem);
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: 18rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 85px;
+}
+
+footer a {
+  color: coral;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+footer ul {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+footer ul li {
+  margin-top: 50px;
+}
+
+footer form input[type="email"] {
+  border: 1px solid coral;
+  padding-left: 10px;
+  font-size: large;
+  height: 2.5rem;
+  width: 24rem;
+  margin-right: 45px;
+}
+
+footer form input[type="email"]:focus {
+  outline: 2.5px solid coral;
+}
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#main-content-container {
+  padding: 100px;
+}
+
+.page-header {
+  padding-bottom: 30px;
+}
+
+.button {
+  padding: 10px 25px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button_coral {
+  background-color: coral;
+  border: 1px solid coral;
+  color: white;
+}
+
+.button_coral:hover {
+  background-color: white;
+  border: 1px solid coral;
+  color: coral;
+}
+
+.border-radius-6px {
+  border-radius: 6px;
+}
+
+.border-radius-8px {
+  border-radius: 8px;
+}
+
+.border-radius-10px {
+  border-radius: 10px;
+}
+
+@media (max-width: 700px) {
+  footer {
+    gap: 40px;
+  }
+
+  footer form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  footer form input[type="email"] {
+    margin: 0 0 30px 0;
+  }
+}
