@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-function App() {
+function Home() {
   const [apiResponse, setApiResponse] = useState();
   const [testState, setTestState] = useState("testing");
 
@@ -15,14 +15,10 @@ function App() {
   });
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>{apiResponse}</p>
-        <p>Hello world!</p>
-        <p>{testState}</p>
-      </header>
+    <div>
+      <h1>Home</h1>
     </div>
   );
 }
 
-export default App;
+export default Home;
