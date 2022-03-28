@@ -24,6 +24,7 @@ function SalonDetail() {
   } else {
     return (
       <div>
+        <h1 className="page-header"></h1>
         <h1>{salon.name}</h1>
         <h3>{salon.street_address}</h3>
         <h5>Created by {salon.author.email}</h5>
