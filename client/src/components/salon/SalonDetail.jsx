@@ -9,10 +9,13 @@ function SalonDetail() {
 
   const { salonid } = useParams();
 
-  useEffect(async () => {
-    const response = await axios(`http://localhost:9000/salons/${salonid}`);
-    setSalon(response.data);
-    setIsLoaded(true);
+  useEffect(() => {
+    async function fetchData() {
+      const response = await axios(`http://localhost:9000/salons/${salonid}`);
+      setSalon(response.data);
+      setIsLoaded(true);
+    }
+    fetchData();
   }, []);
 
   console.log(salon);

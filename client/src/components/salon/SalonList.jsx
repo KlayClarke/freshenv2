@@ -7,10 +7,13 @@ function SalonList() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [salons, setSalons] = useState([]);
 
-  useEffect(async () => {
-    const response = await axios(`http://localhost:9000/salons/`);
-    setSalons(response.data);
-    setIsLoaded(true);
+  useEffect(() => {
+    async function fetchData() {
+      const response = await axios(`http://localhost:9000/salons/`);
+      setSalons(response.data);
+      setIsLoaded(true);
+    }
+    fetchData();
   }, []);
 
   console.log(salons);
