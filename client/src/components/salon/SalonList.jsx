@@ -16,8 +16,6 @@ function SalonList() {
     fetchData();
   }, []);
 
-  console.log(salons);
-
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
