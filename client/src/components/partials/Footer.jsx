@@ -37,7 +37,7 @@ function Footer() {
         <a href="#" className="bold">
           Klay Clarke
         </a>
-        . For those struggling to find a barber or hairstylist they can trust.
+        . Here to point you in the right direction.
       </p>
     </footer>
   );
