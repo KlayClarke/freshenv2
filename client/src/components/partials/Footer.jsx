@@ -32,6 +32,13 @@ function Footer() {
           </a>
         </li>
       </ul>
+      <p>
+        &copy; FRESHEN by{" "}
+        <a href="#" className="bold">
+          Klay Clarke
+        </a>
+        . For those struggling to find a barber or hairstylist they can trust.
+      </p>
     </footer>
   );
 }
