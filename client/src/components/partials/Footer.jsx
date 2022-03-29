@@ -1,32 +1,37 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {} from "@fortawesome/free-solid-svg-icons";
+import {
+  faGithub,
+  faLinkedin,
+  faInstagram,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
+
 function Footer() {
   return (
     <footer>
       <ul>
         <li>
-          <a href="#">Github</a>
+          <a href="#">
+            <FontAwesomeIcon icon={faGithub}></FontAwesomeIcon>
+          </a>
         </li>
         <li>
-          <a href="#">LinkedIn</a>
+          <a href="#">
+            <FontAwesomeIcon icon={faLinkedin}></FontAwesomeIcon>
+          </a>
         </li>
         <li>
-          <a href="#">Instagram</a>
+          <a href="#">
+            <FontAwesomeIcon icon={faInstagram}></FontAwesomeIcon>
+          </a>
         </li>
         <li>
-          <a href="#">Twitter</a>
+          <a href="#">
+            <FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
+          </a>
         </li>
       </ul>
-      <form action="">
-        <input
-          type="email"
-          name=""
-          id=""
-          placeholder="Enter Your Email"
-          className="border-radius-10px"
-        />
-        <button type="button" className="button button_coral border-radius-6px">
-          Join Newsletter
-        </button>
-      </form>
     </footer>
   );
 }
