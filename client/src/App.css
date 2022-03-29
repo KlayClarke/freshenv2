@@ -1,7 +1,8 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: "Fira Sans", sans-serif;
+  font-family: "Signika", sans-serif;
+  font-weight: 300;
 }
 
 a {
@@ -27,13 +28,14 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 4.5rem;
-  border-bottom: 1px solid rgb(201, 201, 201);
+  height: 3.5rem;
+  border-bottom: 0.5px solid rgb(201, 201, 201);
 }
 
 nav ul {
-  display: flex;
   gap: 20px;
+  display: flex;
+  align-items: center;
 }
 
 nav ul:first-child {
@@ -44,46 +46,30 @@ nav ul:nth-child(2) {
   margin-right: 30px;
 }
 
-nav ul li {
-  color: coral;
-}
-
 main {
   background-color: rgb(246, 246, 246);
-  height: calc(100vh - 12rem);
+  height: calc(100vh - 4rem);
 }
 
 footer {
   position: relative;
   bottom: 0;
   width: 100%;
-  height: 18rem;
+  height: 8rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 85px;
-}
-
-footer a {
-  color: coral;
-}
-
-footer a:hover {
-  text-decoration: underline;
+  justify-content: center;
+  background-color: white;
 }
 
 footer ul {
   display: flex;
-  gap: 30px;
+  gap: 50px;
   justify-content: center;
 }
 
-footer ul li {
-  margin-top: 50px;
-}
-
 footer form input[type="email"] {
-  border: 1px solid coral;
+  border: 1px solid lightgray;
   padding-left: 10px;
   font-size: large;
   height: 2.5rem;
@@ -92,7 +78,26 @@ footer form input[type="email"] {
 }
 
 footer form input[type="email"]:focus {
-  outline: 2.5px solid coral;
+  outline: 1px solid lightslategray;
+}
+
+footer form input[type="email"]::placeholder {
+  color: lightslategrey;
+}
+
+footer svg {
+  font-size: xx-large;
+  transition: 0.25s ease;
+}
+
+footer svg:hover {
+  color: rgb(1, 102, 255);
+}
+
+#header_logo {
+  font-family: "Concert One", cursive;
+  font-size: 30px;
+  color: rgb(1, 102, 255);
 }
 
 #page-container {
@@ -104,28 +109,64 @@ footer form input[type="email"]:focus {
   padding: 100px;
 }
 
-.page-header {
-  padding-bottom: 30px;
+.divider {
+  border-left: 1px solid rgb(201, 201, 201);
+  position: relative;
 }
 
-.button {
-  padding: 10px 25px;
+.page-header {
+  padding-bottom: 30px;
 }
 
 .button:hover {
   cursor: pointer;
 }
 
-.button_coral {
-  background-color: coral;
-  border: 1px solid coral;
+.button.button-s {
+  padding: 6px 18px;
+}
+
+.button.button-m {
+  padding: 8px 22px;
+}
+
+.button.button-l {
+  padding: 10px 24px;
+}
+
+.header_join-button {
+  background-color: rgb(1, 102, 255);
+  border: 1px solid rgb(1, 102, 255);
   color: white;
 }
 
-.button_coral:hover {
+.header_join-button:hover {
+  background-color: rgb(0, 95, 237);
+  border: 1px solid rgb(0, 95, 237);
+}
+
+.button-success {
+  background-color: green;
+  border: 1px solid green;
+  color: white;
+}
+
+.button-success:hover {
   background-color: white;
-  border: 1px solid coral;
-  color: coral;
+  border: 1px solid green;
+  color: green;
+}
+
+.button-danger {
+  background-color: red;
+  border: 1px solid red;
+  color: white;
+}
+
+.button-danger:hover {
+  background-color: white;
+  border: 1px solid red;
+  color: red;
 }
 
 .border-radius-6px {
