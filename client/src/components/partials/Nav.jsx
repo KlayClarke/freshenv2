@@ -5,21 +5,29 @@ function Nav() {
     <nav>
       <ul>
         <li>
-          <Link to={"/"}> Home</Link>
+          <Link to={"/"} id="header_logo">
+            FRESHEN
+          </Link>
         </li>
+      </ul>
+      <ul>
         <li>
           <Link to={"/salons"}>Salons</Link>
         </li>
         <li>
           <Link to={"/about"}>About</Link>
         </li>
-      </ul>
-      <ul>
+        <li>
+          <span className="divider"></span>
+        </li>
         <li>
           <Link to={"/login"}>Log In</Link>
         </li>
         <li>
-          <Link to={"/join"} className="button button_coral border-radius-10px">
+          <Link
+            to={"/join"}
+            className="button button-s header_join-button border-radius-6px"
+          >
             Join
           </Link>
         </li>
