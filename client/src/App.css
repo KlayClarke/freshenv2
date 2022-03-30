@@ -55,7 +55,27 @@ nav a.header_join-button:hover {
 }
 
 main {
-  height: calc(100vh - 4rem);
+  min-height: calc(100vh - 11rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form .form-section {
+  margin-bottom: 15px;
+}
+
+form label {
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+  padding: 7px;
+  width: 250px;
+  margin-top: 5px;
 }
 
 footer {
@@ -76,6 +96,7 @@ footer ul {
   display: flex;
   gap: 35px;
   justify-content: center;
+  align-items: center;
 }
 
 footer svg {
@@ -97,12 +118,47 @@ footer p {
   color: rgb(1, 102, 255);
 }
 
-#page-container {
-  position: relative;
-  min-height: 100vh;
+.main-content-container {
+  max-width: 750px;
+  padding: 100px;
 }
 
-#main-content-container {
+.home-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 550px;
+}
+
+.coming-soon-container h2 {
+  text-decoration: underline;
+}
+
+.home-content-container h1,
+.home-content-container h2 {
+  text-align: center;
+}
+
+.home-content-container form {
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.coming-soon-container {
+  text-align: center;
+}
+
+.coming-soon-container ul {
+  margin-top: 30px;
+}
+
+.coming-soon-container ul li {
+  margin-bottom: 10px;
+}
+
+.login-content-container form,
+.join-content-container form {
   padding: 100px;
 }
 
@@ -140,6 +196,27 @@ footer p {
 .header_join-button:hover {
   background-color: rgb(0, 95, 237);
   border: 1px solid rgb(0, 95, 237);
+}
+
+.home_get-started-button {
+  border: 1px solid rgb(1, 102, 255);
+  background-color: rgb(1, 102, 255);
+  color: white;
+}
+
+.home_get-started-button:hover {
+  background-color: rgb(0, 95, 237);
+  border: 1px solid rgb(0, 95, 237);
+}
+
+.home_login-button {
+  border: 1px solid rgb(1, 102, 255);
+  background-color: white;
+  color: rgb(1, 102, 255);
+}
+
+.home_login-button:hover {
+  background-color: rgb(244, 244, 244);
 }
 
 .button-success {
@@ -183,18 +260,4 @@ footer p {
 }
 
 @media (max-width: 700px) {
-  footer {
-    gap: 40px;
-  }
-
-  footer form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  footer form input[type="email"] {
-    margin: 0 0 30px 0;
-  }
 }
