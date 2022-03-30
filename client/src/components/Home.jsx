@@ -3,7 +3,7 @@ function Home() {
     <div className="home-content-wrapper">
       <div className="home-content-container">
         <h1>
-          FOR THOSE STRUGGLING TO FIND A REPUTABLE BARBERSHOP OR SALON NEARBY
+          For those struggling to find a reputable barbershop or salon nearby
         </h1>
         <h2>
           As both an assistant and an intermediary, we promise to connect
@@ -27,10 +27,10 @@ function Home() {
           <h2>We are currently working to implement the following features:</h2>
           <ul>
             <li>
-              <h3>Ability to Join using gmail</h3>
+              <h3>Ability to join and login using Gmail</h3>
             </li>
             <li>
-              <h3>Scheduling and appointment handling</h3>
+              <h3>Handle scheduling and appointments</h3>
             </li>
           </ul>
         </div>
