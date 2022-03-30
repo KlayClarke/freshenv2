@@ -12,16 +12,14 @@ function RouteSwitch() {
     <BrowserRouter>
       <Nav />
       <main>
-        <div className="main-content-container">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/salons" element={<SalonList />} />
-            <Route path="/salons/:salonid" element={<SalonDetail />} />
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/join" element={<JoinForm />} />
-            <Route path="/about" />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/salons" element={<SalonList />} />
+          <Route path="/salons/:salonid" element={<SalonDetail />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/join" element={<JoinForm />} />
+          <Route path="/about" />
+        </Routes>
       </main>
       <Footer />
     </BrowserRouter>
