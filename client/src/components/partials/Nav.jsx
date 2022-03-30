@@ -58,26 +58,6 @@ function Nav() {
           </Link>
         </li>
       </ul>
-      <LoginModal
-        isOpen={isLoginOpen}
-        onRequestClose={toggleLoginModal}
-        contentLabel="My dialog"
-        portalClassName="login-modal"
-        overlayClassName="login-modal-overlay"
-      >
-        <div>My login modal dialog</div>
-        <button onClick={toggleLoginModal}>Close login modal</button>
-      </LoginModal>
-      <JoinModal
-        isOpen={isJoinOpen}
-        onRequestClose={toggleJoinModal}
-        contentLabel="My dialog"
-        portalClassName="join-modal"
-        overlayClassName="join-modal-overlay"
-      >
-        <div>My join modal dialog</div>
-        <button onClick={toggleJoinModal}>Close join modal</button>
-      </JoinModal>
     </nav>
   );
 }
