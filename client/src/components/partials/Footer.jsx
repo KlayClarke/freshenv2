@@ -11,8 +11,9 @@ function Footer() {
   return (
     <footer>
       <ul>
+        <p>Follow us on socials:</p>
         <li>
-          <a href="#">
+          <a href="https://github.com/KlayClarke/freshenv2" target="_blank">
             <FontAwesomeIcon icon={faGithub}></FontAwesomeIcon>
           </a>
         </li>
@@ -34,7 +35,11 @@ function Footer() {
       </ul>
       <p>
         &copy; FRESHEN by{" "}
-        <a href="#" className="bold">
+        <a
+          href="https://github.com/KlayClarke"
+          target="_blank"
+          className="bold"
+        >
           Klay Clarke
         </a>
         . Here to point you in the right direction.
