@@ -12,29 +12,29 @@ function JoinForm() {
           ></FontAwesomeIcon>{" "}
           Join with Google
         </button>
-        <form action="">
+        <form action="http://localhost:9000/users" method="POST">
           <div className="form-section">
-            <label htmlFor="first-name">First Name</label>
+            <label htmlFor="first_name">First Name</label>
             <br />
-            <input type="text" id="first-name" />
+            <input type="text" id="first_name" name="first_name" />
             <br />
           </div>
           <div className="form-section">
-            <label htmlFor="last-name">Last Name</label>
+            <label htmlFor="last_name">Last Name</label>
             <br />
-            <input type="text" id="last-name" />
+            <input type="text" id="last_name" name="last_name" />
             <br />
           </div>
           <div className="form-section">
             <label htmlFor="email">Email</label>
             <br />
-            <input type="email" id="email" />
+            <input type="email" id="email" name="email" />
             <br />
           </div>
           <div className="form-section">
             <label htmlFor="password">Password</label>
             <br />
-            <input type="password" id="password" />
+            <input type="password" id="password" name="password" />
             <br />
           </div>
           <button className="auth-form-submit button border-radius-4px">
