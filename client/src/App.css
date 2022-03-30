@@ -70,9 +70,18 @@ form label {
 form input[type="text"],
 form input[type="email"],
 form input[type="password"] {
+  border: 1px solid lightgray;
+  border-radius: 4px;
   padding: 7px;
   width: 250px;
   margin-top: 5px;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus {
+  border: 1px solid rgb(82, 140, 228);
+  outline: 5px solid rgba(48, 114, 213, 0.147);
 }
 
 footer {
@@ -124,6 +133,7 @@ footer p {
 }
 
 .home-content-container {
+  padding: 60px 0;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -132,12 +142,8 @@ footer p {
 
 .home-content-container h1 {
   font-family: "Concert One", sans-serif;
-  font-size: 30px;
+  font-size: 50px;
   color: rgb(1, 102, 255);
-}
-
-.coming-soon-container h2 {
-  text-decoration: underline;
 }
 
 .home-content-container h1,
@@ -151,8 +157,26 @@ footer p {
   justify-content: space-evenly;
 }
 
+.home-content-divider {
+  border: 10px dashed rgb(255, 201, 100);
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 .coming-soon-container {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.coming-soon-container h2 {
+  background-color: rgb(255, 201, 100);
+  border: 2px solid black;
+  padding: 20px 10px;
+  max-width: 500px;
+  border-radius: 6px;
 }
 
 .coming-soon-container ul {
