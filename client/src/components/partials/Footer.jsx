@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {} from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
   faLinkedin,
@@ -11,7 +10,7 @@ function Footer() {
   return (
     <footer>
       <ul>
-        <p>Follow us on socials:</p>
+        <p className="social-media-text">Follow us on socials:</p>
         <li>
           <a href="https://github.com/KlayClarke/freshenv2" target="_blank">
             <FontAwesomeIcon icon={faGithub}></FontAwesomeIcon>
@@ -34,15 +33,14 @@ function Footer() {
         </li>
       </ul>
       <p>
-        &copy; FRESHEN by{" "}
+        &copy; freshen by{" "}
         <a
           href="https://github.com/KlayClarke"
           target="_blank"
-          className="bold"
+          className="bold blue"
         >
           Klay Clarke
         </a>
-        . Here to point you in the right direction.
       </p>
     </footer>
   );
