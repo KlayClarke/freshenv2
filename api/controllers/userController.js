@@ -47,10 +47,12 @@ exports.user_create = [
       User.findOne({ email: req.body.email }).exec(function (err, found_user) {
         if (err) return next(err);
         if (found_user)
-          return res.send("User with same email found in database");
+          return res.json({
+            error: "User with same email found in database",
+          });
         user.save(function (err) {
           if (err) return next(err);
-          res.send("User successfully created");
+          res.json({ success: "User successfully created" });
         });
       });
     });
