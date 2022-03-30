@@ -23,6 +23,7 @@ function Home() {
             Log In Using An Existing Account
           </a>
         </form>
+        <div className="home-content-divider"></div>
         <div className="coming-soon-container">
           <h2>We are currently working to implement the following features:</h2>
           <ul>
