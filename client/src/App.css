@@ -56,9 +56,6 @@ nav a.header_join-button:hover {
 
 main {
   min-height: calc(100vh - 11rem);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 form .form-section {
@@ -118,16 +115,25 @@ footer p {
   color: rgb(1, 102, 255);
 }
 
-.main-content-container {
-  max-width: 750px;
-  padding: 100px;
+.home-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 11rem);
 }
 
 .home-content-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 550px;
+  gap: 30px;
+  max-width: 800px;
+}
+
+.home-content-container h1 {
+  font-family: "Concert One", sans-serif;
+  font-size: 30px;
+  color: rgb(1, 102, 255);
 }
 
 .coming-soon-container h2 {
@@ -157,9 +163,31 @@ footer p {
   margin-bottom: 10px;
 }
 
+.login-content-wrapper,
+.join-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 11rem);
+}
+
+.login-content-container,
+.join-content-container {
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .login-content-container form,
 .join-content-container form {
-  padding: 100px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .divider {
@@ -219,6 +247,31 @@ footer p {
   background-color: rgb(244, 244, 244);
 }
 
+.auth-form-submit.button {
+  border: 1px solid rgb(1, 102, 255);
+  background-color: rgb(1, 102, 255);
+  color: white;
+  padding: 7px;
+  width: 268px;
+  margin-top: 10px;
+}
+
+.auth-form-submit.button:hover {
+  background-color: rgb(0, 95, 237);
+}
+
+.auth-login.button,
+.auth-join.button {
+  border: 1px solid lightgray;
+  padding: 7px;
+  width: 268px;
+}
+
+.auth-login.button:hover,
+.auth-join.button:hover {
+  background-color: rgb(251, 251, 251);
+}
+
 .button-success {
   background-color: green;
   border: 1px solid green;
@@ -243,6 +296,10 @@ footer p {
   color: red;
 }
 
+.border-radius-4px {
+  border-radius: 4px;
+}
+
 .border-radius-6px {
   border-radius: 6px;
 }
@@ -259,5 +316,16 @@ footer p {
   font-weight: 500;
 }
 
-@media (max-width: 700px) {
+.blue {
+  color: rgb(1, 102, 255);
+}
+
+.google-icon {
+  margin-right: 10px;
+}
+
+@media (max-width: 500px) {
+  footer .social-media-text {
+    display: none;
+  }
 }
