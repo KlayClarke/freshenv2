@@ -25,7 +25,7 @@ function Home() {
         </form>
         <div className="home-content-divider"></div>
         <div className="coming-soon-container">
-          <h2>We are currently working to implement the following features:</h2>
+          <h2>Upcoming Features Include:</h2>
           <ul>
             <li>
               <h3>Ability to join and login using Gmail</h3>
