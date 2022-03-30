@@ -157,12 +157,6 @@ footer p {
   justify-content: space-evenly;
 }
 
-.home-content-divider {
-  border: 10px dashed rgb(255, 201, 100);
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
 .coming-soon-container {
   text-align: center;
   display: flex;
