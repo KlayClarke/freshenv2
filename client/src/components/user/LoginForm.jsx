@@ -29,6 +29,12 @@ function LoginForm() {
             Log In
           </button>
         </form>
+        <p>
+          Don't have an account?{" "}
+          <a href="/join" className="blue">
+            Join
+          </a>
+        </p>
       </div>
     </div>
   );
