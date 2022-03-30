@@ -28,10 +28,22 @@ function Home() {
           <h2>Upcoming Features Include:</h2>
           <ul>
             <li>
+              <h3>Salon index</h3>
+            </li>
+            <li>
+              <h3>Salon detail page</h3>
+            </li>
+            <li>
+              <h3>Add google maps cluster map to salon index</h3>
+            </li>
+            <li>
+              <h3>Ability to login - session persistence</h3>
+            </li>
+            <li>
               <h3>Ability to join and login using Gmail</h3>
             </li>
             <li>
-              <h3>Handle scheduling and appointments</h3>
+              <h3>Ability to handle scheduling and appointments</h3>
             </li>
           </ul>
         </div>
