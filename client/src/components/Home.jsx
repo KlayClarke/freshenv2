@@ -3,7 +3,9 @@ function Home() {
     <div className="home-content-wrapper">
       <div className="home-content-container">
         <h1>
-          For those struggling to find a reputable barbershop or salon nearby
+          Whether you are a customer searching for a reputable salon or a
+          hairstylist searching for new customers, <span>freshen</span> has you
+          covered.
         </h1>
         <h2>
           As both an assistant and an intermediary, we promise to connect
