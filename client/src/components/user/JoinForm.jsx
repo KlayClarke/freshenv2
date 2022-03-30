@@ -41,6 +41,12 @@ function JoinForm() {
             Join
           </button>
         </form>
+        <p>
+          Already have an account?{" "}
+          <a href="/login" className="blue">
+            Log In
+          </a>
+        </p>
       </div>
     </div>
   );
