@@ -3,7 +3,7 @@ function Home() {
     <div className="home-content-wrapper">
       <div className="home-content-container">
         <h1>
-          Whether you are a customer searching for a reputable salon or a
+          Whether you are a customer searching for a new hairstylist or a
           hairstylist searching for new customers, <span>freshen</span> is the
           answer.
         </h1>
