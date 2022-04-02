@@ -96,9 +96,17 @@ exports.user_login = [
       if (!found_user) {
         return res.json({ error: "User not found" });
       }
+      // check if request body password matches db unhashed password
       let result = await bcrypt.compare(req.body.password, found_user.password);
       if (result) {
-        return res.json(found_user);
+        jwt.sign(
+          { email: found_user.email, password: found_user.password },
+          "secretkey",
+          (err, token) => {
+            if (err) return next(err);
+            res.json({ token });
+          }
+        );
       } else {
         return res.json("User credentials incorrect");
       }
