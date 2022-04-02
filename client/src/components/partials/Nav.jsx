@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Nav() {
+  const [isLoggedin, setIsLoggedIn] = useState(false);
   return (
     <nav>
       <ul>
@@ -13,7 +14,7 @@ function Nav() {
       </ul>
       <ul>
         <li>
-          <Link to={"/salons"}>Salons</Link>
+          <Link to={"/explore"}>Explore</Link>
         </li>
         <li>
           <Link to={"/about"}>About</Link>
