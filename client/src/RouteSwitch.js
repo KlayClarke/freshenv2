@@ -14,8 +14,8 @@ function RouteSwitch() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/salons" element={<SalonList />} />
-          <Route path="/salons/:salonid" element={<SalonDetail />} />
+          <Route path="/explore" element={<SalonList />} />
+          <Route path="/explore/salons/:salonid" element={<SalonDetail />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/join" element={<JoinForm />} />
           <Route path="/about" />
