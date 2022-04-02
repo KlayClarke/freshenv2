@@ -12,7 +12,7 @@ function LoginForm() {
           ></FontAwesomeIcon>{" "}
           Log in with Google
         </button>
-        <form action="http://localhost:9000/users" method="POST">
+        <form action="http://localhost:9000/users/login" method="POST">
           <div className="form-section">
             <label htmlFor="email">Email</label>
             <br />
