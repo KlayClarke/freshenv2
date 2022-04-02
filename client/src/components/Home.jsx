@@ -4,13 +4,9 @@ function Home() {
       <div className="home-content-container">
         <h1>
           Whether you are a customer searching for a reputable salon or a
-          hairstylist searching for new customers, <span>freshen</span> has you
-          covered.
+          hairstylist searching for new customers, <span>freshen</span> is the
+          answer.
         </h1>
-        <h2>
-          As both an assistant and an intermediary, we promise to connect
-          trustworthy hairstylists to potential clientele around the world.
-        </h2>
         <form action="">
           <a
             href="/join"
@@ -27,7 +23,7 @@ function Home() {
         </form>
         <div className="home-content-divider"></div>
         <div className="coming-soon-container">
-          <h2>Upcoming Features Include:</h2>
+          <h2>Upcoming Features Below:</h2>
           <ul>
             <li>
               <h3>Salon index</h3>
