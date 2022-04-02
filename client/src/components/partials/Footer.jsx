@@ -37,7 +37,7 @@ function Footer() {
         <a
           href="https://github.com/KlayClarke"
           target="_blank"
-          className="bold blue"
+          className="blue"
         >
           Klay Clarke
         </a>
