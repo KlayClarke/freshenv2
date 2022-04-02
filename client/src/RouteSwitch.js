@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Home from "./components/Home";
 import Footer from "./components/partials/Footer";
 import Nav from "./components/partials/Nav";
@@ -8,6 +9,19 @@ import JoinForm from "./components/user/JoinForm";
 import LoginForm from "./components/user/LoginForm";
 
 function RouteSwitch() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    if (!localStorage.getItem("freshen_user_data")) {
+      setIsLoggedIn(false);
+      setUser({});
+    }
+    setIsLoggedIn(true);
+    setUser(JSON.parse(localStorage.getItem("freshen_user_data")));
+    console.log("render");
+  }, []);
+
   return (
     <BrowserRouter>
       <Nav />
