@@ -1,14 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const navigate = useNavigate();
 
   async function login(e) {
     e.preventDefault();
@@ -26,7 +23,6 @@ function LoginForm() {
       );
       window.location.reload(false);
     } else {
-      navigate("../login");
       window.location.reload(false);
     }
   }
