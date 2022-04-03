@@ -27,8 +27,7 @@ function LoginForm() {
       window.location.reload(false);
     } else {
       navigate("../login");
-      setEmail("");
-      setPassword("");
+      window.location.reload(false);
     }
   }
 
