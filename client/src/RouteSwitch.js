@@ -11,33 +11,45 @@ import LoginForm from "./components/user/LoginForm";
 
 function RouteSwitch() {
   const [user, setUser] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchUserInformation(id) {
-      const response = await axios.get("http://localhost:9000/users/" + id);
-      console.log(response.data);
-      setUser(response.data);
-    }
+    const controller = new AbortController();
+    const signal = controller.signal;
     if (localStorage.getItem("freshen_user_data")) {
       const userId = JSON.parse(localStorage.getItem("freshen_user_data"))[
         "id"
       ];
-      fetchUserInformation(userId);
+      axios
+        .get("http://localhost:9000/users/" + userId, { signal })
+        .then((response) => {
+          setTimeout(() => {
+            setLoading(false);
+          }, 1000);
+          setUser(response.data);
+        })
+        .catch((err) => {
+          new Error(err);
+        });
+      return () => controller.abort;
     } else {
-      setUser();
+      setLoading(false);
     }
   }, []);
 
   return (
     <BrowserRouter>
-      <Nav user={user} />
+      <Nav user={user} loading={loading} />
       <main>
         <Routes>
-          <Route path="/" element={<Home user={user} />} />
-          <Route path="/explore" element={<SalonList user={user} />} />
+          <Route path="/" element={<Home user={user} loading={loading} />} />
+          <Route
+            path="/explore"
+            element={<SalonList user={user} loading={loading} />}
+          />
           <Route
             path="/explore/salons/:salonid"
-            element={<SalonDetail user={user} />}
+            element={<SalonDetail user={user} loading={loading} />}
           />
           <Route
             path="/login"
@@ -47,10 +59,10 @@ function RouteSwitch() {
             path="/join"
             element={user ? <Navigate replace to={"/"} /> : <JoinForm />}
           />
-          <Route path="/about" user={user} />
+          <Route path="/about" user={user} loading={loading} />
         </Routes>
       </main>
-      <Footer />
+      <Footer loading={loading} />
     </BrowserRouter>
   );
 }
