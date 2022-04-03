@@ -21,9 +21,20 @@ function RouteSwitch() {
 
     // uncomment code below to simulate loggedin user
 
+    localStorage.setItem(
+      "freshen_user_data",
+      JSON.stringify({
+        token: "",
+        id: "",
+        first_name: "Klay",
+        last_name: "Clarke",
+      })
+    );
+
     setIsLoggedIn(true);
     setUser(JSON.parse(localStorage.getItem("freshen_user_data")));
     console.log("render");
+    console.log(user);
   }, []);
 
   return (
@@ -31,7 +42,10 @@ function RouteSwitch() {
       <Nav isLoggedIn={isLoggedIn} />
       <main>
         <Routes>
-          <Route path="/" element={<Home isLoggedIn={isLoggedIn} />} />
+          <Route
+            path="/"
+            element={<Home isLoggedIn={isLoggedIn} user={user} />}
+          />
           <Route path="/explore" element={<SalonList />} />
           <Route path="/explore/salons/:salonid" element={<SalonDetail />} />
           <Route
