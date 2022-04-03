@@ -6,7 +6,10 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 
-function Footer() {
+function Footer({ loading }) {
+  if (loading) {
+    return <div></div>;
+  }
   return (
     <footer>
       <ul>
