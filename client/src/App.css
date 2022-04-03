@@ -167,30 +167,6 @@ footer p {
   justify-content: space-evenly;
 }
 
-.coming-soon-container {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.coming-soon-container h2 {
-  background-color: rgb(255, 201, 100);
-  border: 2px solid black;
-  padding: 20px 10px;
-  max-width: 500px;
-  border-radius: 6px;
-}
-
-.coming-soon-container ul {
-  margin-top: 30px;
-}
-
-.coming-soon-container ul li {
-  margin-bottom: 10px;
-}
-
 .login-content-wrapper,
 .join-content-wrapper {
   display: flex;
@@ -226,6 +202,68 @@ footer p {
 .divider {
   border-left: 1px solid rgb(201, 201, 201);
   position: relative;
+}
+
+.explore-page-wrapper {
+  min-height: calc(100vh - 11rem);
+  display: flex;
+  justify-content: center;
+}
+
+.explore-page-container {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+ul.salon-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.salon-card {
+  border: 1px solid lightgray;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex: 1 1 100px;
+  min-height: 10rem;
+  width: 300px;
+  margin: 15px 15px;
+}
+
+.salon-card:hover {
+  cursor: pointer;
+  border-color: rgb(171, 171, 171);
+  box-shadow: -6px 10px 10px 0px rgba(216, 216, 216, 0.1);
+  -webkit-box-shadow: -6px 10px 10px 0px rgba(216, 216, 216, 0.1);
+  -moz-box-shadow: -6px 10px 10px 0px rgba(216, 216, 216, 0.1);
+}
+
+.salon-card .left-content {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.salon-card .right-content {
+  background-color: rgb(247, 247, 248);
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.salon-card img {
+  border: 1px solid rgb(100, 100, 100);
+  width: 80%;
+  height: 80%;
 }
 
 .page-header {
@@ -347,6 +385,10 @@ footer p {
 
 .blue {
   color: rgb(1, 102, 255);
+}
+
+.bold {
+  font-weight: 400;
 }
 
 .google-icon {
