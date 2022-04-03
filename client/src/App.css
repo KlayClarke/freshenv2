@@ -124,6 +124,13 @@ footer p {
   color: rgb(1, 102, 255);
 }
 
+.loading-icon-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .home-content-wrapper {
   display: flex;
   flex-direction: column;
