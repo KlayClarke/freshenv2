@@ -7,24 +7,30 @@ function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function login(e) {
+  function login(e) {
     e.preventDefault();
-    const response = await axios.post("http://localhost:9000/users/login", {
-      email,
-      password,
-    });
-    if (response.data.token && response.data.id) {
-      localStorage.setItem(
-        "freshen_user_data",
-        JSON.stringify({
-          token: response.data.token,
-          id: response.data.id,
-        })
-      );
-      window.location.reload(false);
-    } else {
-      window.location.reload(false);
-    }
+    axios
+      .post("http://localhost:9000/users/login", {
+        email,
+        password,
+      })
+      .then((response) => {
+        if (response.data.token && response.data.id) {
+          localStorage.setItem(
+            "freshen_user_data",
+            JSON.stringify({
+              token: response.data.token,
+              id: response.data.id,
+            })
+          );
+          window.location.reload(false);
+        } else {
+          window.location.reload(false);
+        }
+      })
+      .catch((err) => {
+        new Error(err);
+      });
   }
 
   return (
