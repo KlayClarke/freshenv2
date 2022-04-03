@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Home from "./components/Home";
 import Footer from "./components/partials/Footer";
@@ -9,6 +9,7 @@ import JoinForm from "./components/user/JoinForm";
 import LoginForm from "./components/user/LoginForm";
 
 function RouteSwitch() {
+  const [token, setToken] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({});
 
@@ -17,6 +18,9 @@ function RouteSwitch() {
       setIsLoggedIn(false);
       setUser({});
     }
+
+    // uncomment code below to simulate loggedin user
+
     setIsLoggedIn(true);
     setUser(JSON.parse(localStorage.getItem("freshen_user_data")));
     console.log("render");
@@ -24,14 +28,20 @@ function RouteSwitch() {
 
   return (
     <BrowserRouter>
-      <Nav />
+      <Nav isLoggedIn={isLoggedIn} />
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home isLoggedIn={isLoggedIn} />} />
           <Route path="/explore" element={<SalonList />} />
           <Route path="/explore/salons/:salonid" element={<SalonDetail />} />
-          <Route path="/login" element={<LoginForm />} />
-          <Route path="/join" element={<JoinForm />} />
+          <Route
+            path="/login"
+            element={isLoggedIn ? <Navigate replace to={"/"} /> : <LoginForm />}
+          />
+          <Route
+            path="/join"
+            element={isLoggedIn ? <Navigate replace to={"/"} /> : <JoinForm />}
+          />
           <Route path="/about" />
         </Routes>
       </main>
