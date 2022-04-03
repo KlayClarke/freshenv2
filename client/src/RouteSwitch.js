@@ -25,7 +25,7 @@ function RouteSwitch() {
         .then((response) => {
           setTimeout(() => {
             setLoading(false);
-          }, 1000);
+          }, 500);
           setUser(response.data);
         })
         .catch((err) => {
@@ -43,13 +43,10 @@ function RouteSwitch() {
       <main>
         <Routes>
           <Route path="/" element={<Home user={user} loading={loading} />} />
-          <Route
-            path="/explore"
-            element={<SalonList user={user} loading={loading} />}
-          />
+          <Route path="/explore" element={<SalonList user={user} />} />
           <Route
             path="/explore/salons/:salonid"
-            element={<SalonDetail user={user} loading={loading} />}
+            element={<SalonDetail user={user} />}
           />
           <Route
             path="/login"
