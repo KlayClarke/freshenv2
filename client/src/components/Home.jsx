@@ -1,4 +1,4 @@
-function Home() {
+function Home({ isLoggedIn }) {
   return (
     <div className="home-content-wrapper">
       <div className="home-content-container">
@@ -7,21 +7,25 @@ function Home() {
           hairstylist searching for new customers, <span>freshen</span> is the
           answer.
         </h1>
-        <form action="">
-          <a
-            href="/join"
-            className="button button-l home_get-started-button border-radius-6px"
-          >
-            Create A New Account
-          </a>
-          <a
-            href="/login"
-            className="button button-l home_login-button border-radius-6px"
-          >
-            Log In Using An Existing Account
-          </a>
-        </form>
-        <div className="home-content-divider"></div>
+        {!isLoggedIn ? (
+          <form action="">
+            <a
+              href="/join"
+              className="button button-l home_get-started-button border-radius-6px"
+            >
+              Create A New Account
+            </a>
+            <a
+              href="/login"
+              className="button button-l home_login-button border-radius-6px"
+            >
+              Log In Using An Existing Account
+            </a>
+          </form>
+        ) : (
+          ""
+        )}
+
         <div className="coming-soon-container">
           <h2>Upcoming Features Below:</h2>
           <ul>
