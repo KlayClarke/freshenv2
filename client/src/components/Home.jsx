@@ -8,8 +8,8 @@ function Home({ user, loading }) {
           <CirclesWithBar
             type="Circles"
             color="rgb(1, 102, 255)"
-            height={160}
-            width={160}
+            height={80}
+            width={80}
           />
         </div>
       </div>
