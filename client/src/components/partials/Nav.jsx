@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function Nav({ user }) {
+function Nav({ user, loading }) {
   const navigate = useNavigate();
 
   function handleLogout(e) {
@@ -9,6 +9,9 @@ function Nav({ user }) {
     localStorage.removeItem("freshen_user_data");
     navigate("../");
     window.location.reload(false);
+  }
+  if (loading) {
+    return <div></div>;
   }
 
   if (user) {
