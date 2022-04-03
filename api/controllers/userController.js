@@ -104,7 +104,7 @@ exports.user_login = [
           "secretkey",
           (err, token) => {
             if (err) return next(err);
-            res.json({ token });
+            res.json({ token, id: found_user._id });
           }
         );
       } else {
