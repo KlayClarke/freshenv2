@@ -13,8 +13,16 @@ function RouteSwitch() {
   const [user, setUser] = useState();
 
   useEffect(() => {
+    async function fetchUserInformation(id) {
+      const response = await axios.get("http://localhost:9000/users/" + id);
+      console.log(response.data);
+      setUser(response.data);
+    }
     if (localStorage.getItem("freshen_user_data")) {
-      setUser(JSON.parse(localStorage.getItem("freshen_user_data")));
+      const userId = JSON.parse(localStorage.getItem("freshen_user_data"))[
+        "id"
+      ];
+      fetchUserInformation(userId);
     } else {
       setUser();
     }
