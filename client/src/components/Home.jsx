@@ -1,23 +1,25 @@
-function Home({ isLoggedIn, user }) {
+function Home({ user }) {
   return (
     <div className="home-content-wrapper">
       <div className="home-content-container">
-        <h1>
-          <span>Welcome back, {user.first_name}!</span>
-        </h1>
-        {!isLoggedIn ? (
+        {user ? (
+          <h1>
+            <span>Welcome back!</span>
+          </h1>
+        ) : (
+          ""
+        )}
+        {!user ? (
           <h1>
             Whether you are a customer searching for a new hairstylist or a
             hairstylist searching for new customers, <span>freshen</span> is the
             answer.
           </h1>
         ) : (
-          <h1>
-            No matter the question, the answer is <span>freshen</span>!
-          </h1>
+          ""
         )}
 
-        {!isLoggedIn ? (
+        {!user ? (
           <form action="">
             <a
               href="/join"
