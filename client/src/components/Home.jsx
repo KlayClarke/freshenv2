@@ -4,7 +4,7 @@ function Home({ user }) {
       <div className="home-content-container">
         {user ? (
           <h1>
-            <span>Welcome back!</span>
+            <span>Welcome back, {user.first_name}!</span>
           </h1>
         ) : (
           ""
