@@ -1,8 +1,17 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function Nav({ isLoggedIn }) {
-  if (isLoggedIn == true) {
+function Nav({ user }) {
+  const navigate = useNavigate();
+
+  function handleLogout(e) {
+    e.preventDefault();
+    localStorage.removeItem("freshen_user_data");
+    navigate("../");
+    window.location.reload(false);
+  }
+
+  if (user) {
     return (
       <nav>
         <ul>
@@ -26,12 +35,12 @@ function Nav({ isLoggedIn }) {
             <Link to={"/account"}>Account</Link>
           </li>
           <li>
-            <Link
-              to={"/logout"}
+            <button
+              onClick={handleLogout}
               className="button button-s header_join-button border-radius-6px"
             >
               Logout
-            </Link>
+            </button>
           </li>
         </ul>
       </nav>
