@@ -1,4 +1,20 @@
-function Home({ user }) {
+import { CirclesWithBar } from "react-loader-spinner";
+
+function Home({ user, loading }) {
+  if (loading) {
+    return (
+      <div className="loading-icon-wrapper">
+        <div className="loading-icon centered">
+          <CirclesWithBar
+            type="Circles"
+            color="rgb(1, 102, 255)"
+            height={160}
+            width={160}
+          />
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="home-content-wrapper">
       <div className="home-content-container">
@@ -37,30 +53,6 @@ function Home({ user }) {
         ) : (
           ""
         )}
-
-        <div className="coming-soon-container">
-          <h2>Upcoming Features Below:</h2>
-          <ul>
-            <li>
-              <h3>Salon index</h3>
-            </li>
-            <li>
-              <h3>Salon detail page</h3>
-            </li>
-            <li>
-              <h3>Add google maps cluster map to salon index</h3>
-            </li>
-            <li>
-              <h3>Ability to login - session persistence</h3>
-            </li>
-            <li>
-              <h3>Ability to join and login using Gmail</h3>
-            </li>
-            <li>
-              <h3>Ability to handle scheduling and appointments</h3>
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
   );
