@@ -2,6 +2,7 @@ const Salon = require("../models/salon");
 const async = require("async");
 const { findLocation } = require("../public/javascripts/findLocation");
 const { body, validationResult } = require("express-validator");
+const jwt = require("jsonwebtoken");
 
 // return all salons
 exports.salon_list = function (req, res) {
@@ -64,10 +65,12 @@ exports.salon_create = [
       author: req.body.author,
       reviews: req.body.reviews,
     });
-    console.log(salon);
-    salon.save(function (err) {
-      if (err) return next(err);
-      return res.send("Salon created succesfully");
+    jwt.verify(req.token, "secretkey", (err, authData) => {
+      if (err) return res.sendStatus(403);
+      salon.save(function (err) {
+        if (err) return next(err);
+        return res.send("Salon created succesfully");
+      });
     });
   },
 ];
@@ -85,11 +88,12 @@ exports.salon_delete = function (req, res, next) {
     },
     function (err, results) {
       if (err) return next(err);
-      if (!(req.body.api_key || req.body.api_key == process.env.API_KEY))
-        return res.send("Unauthorized delete request unsuccessful");
-      Salon.findByIdAndDelete(req.params.salonid, function () {
-        if (err) return next(err);
-        return res.send("Salon successfully deleted");
+      jwt.verify(req.token, "secretkey", (err, authData) => {
+        if (err) return res.sendStatus(403);
+        Salon.findByIdAndDelete(req.params.salonid, function () {
+          if (err) return next(err);
+          return res.send("Salon successfully deleted");
+        });
       });
     }
   );

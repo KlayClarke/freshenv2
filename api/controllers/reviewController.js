@@ -2,6 +2,7 @@ const Salon = require("../models/salon");
 const Review = require("../models/review");
 const async = require("async");
 const { body, validationResult } = require("express-validator");
+const jwt = require("jsonwebtoken");
 
 // return all reviews
 exports.review_list = function (req, res) {
@@ -39,9 +40,12 @@ exports.review_create = [
       author: req.body.author,
     });
     if (!errors.isEmpty()) return res.send(errors.array());
-    review.save(function (err) {
-      if (err) return next(err);
-      return res.send("Review successfully created");
+    jwt.verify(req.token, "secretkey", (err, authData) => {
+      if (err) return res.sendStatus(403);
+      review.save(function (err) {
+        if (err) return next(err);
+        return res.send("Review successfully created");
+      });
     });
   },
 ];
@@ -59,9 +63,12 @@ exports.review_delete = function (req, res) {
     },
     function (err, results) {
       if (err) return next(err);
-      Review.findByIdAndDelete(req.params.reviewid, function () {
-        if (err) return next(err);
-        return res.send("Review successfully deleted.");
+      jwt.verify(req.token, "secretkey", (err, authData) => {
+        if (err) return res.sendStatus(403);
+        Review.findByIdAndDelete(req.params.reviewid, function () {
+          if (err) return next(err);
+          return res.send("Review successfully deleted.");
+        });
       });
     }
   );

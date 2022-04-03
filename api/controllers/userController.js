@@ -71,11 +71,12 @@ exports.user_delete = function (req, res, next) {
     },
     function (err, results) {
       if (err) return next(err);
-      if (!(req.body.api_key || req.body.api_key == process.env.API_KEY))
-        return res.send("Unauthorized delete request unsuccessful");
-      User.findByIdAndDelete(req.params.userid, function deleteUser(err) {
-        if (err) return next(err);
-        return res.send("User successfully deleted");
+      jwt.verify(req.token, "secretkey", (err, authData) => {
+        if (err) return res.sendStatus(403);
+        User.findByIdAndDelete(req.params.userid, function deleteUser(err) {
+          if (err) return next(err);
+          return res.send("User successfully deleted");
+        });
       });
     }
   );
