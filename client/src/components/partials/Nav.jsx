@@ -26,7 +26,7 @@ function Nav({ user, loading }) {
         </ul>
         <ul>
           <li>
-            <Link to={"/explore"}>Explore</Link>
+            <Link to={"/salons"}>Explore</Link>
           </li>
           <li>
             <Link to={"/about"}>About</Link>
@@ -60,7 +60,7 @@ function Nav({ user, loading }) {
         </ul>
         <ul>
           <li>
-            <Link to={"/explore"}>Explore</Link>
+            <Link to={"/salons"}>Explore</Link>
           </li>
           <li>
             <Link to={"/about"}>About</Link>
