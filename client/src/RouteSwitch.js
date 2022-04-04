@@ -8,6 +8,8 @@ import SalonDetail from "./components/salon/SalonDetail";
 import SalonList from "./components/salon/SalonList";
 import JoinForm from "./components/user/JoinForm";
 import LoginForm from "./components/user/LoginForm";
+import ScrollToTop from "./components/utils/ScrollToTop";
+import SalonCreateForm from "./components/salon/SalonCreateForm";
 
 function RouteSwitch() {
   const [user, setUser] = useState();
@@ -40,25 +42,37 @@ function RouteSwitch() {
   return (
     <BrowserRouter>
       <Nav user={user} loading={loading} />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home user={user} loading={loading} />} />
-          <Route path="/explore" element={<SalonList user={user} />} />
-          <Route
-            path="/explore/salons/:salonid"
-            element={<SalonDetail user={user} />}
-          />
-          <Route
-            path="/login"
-            element={user ? <Navigate replace to={"/"} /> : <LoginForm />}
-          />
-          <Route
-            path="/join"
-            element={user ? <Navigate replace to={"/"} /> : <JoinForm />}
-          />
-          <Route path="/about" user={user} loading={loading} />
-        </Routes>
-      </main>
+      <ScrollToTop>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home user={user} loading={loading} />} />
+            <Route path="/salons" element={<SalonList user={user} />} />
+            <Route
+              path="/salons/create"
+              element={
+                !user ? (
+                  <Navigate replace to={"/salons"} />
+                ) : (
+                  <SalonCreateForm />
+                )
+              }
+            />
+            <Route
+              path="/salons/:salonid"
+              element={<SalonDetail user={user} />}
+            />
+            <Route
+              path="/login"
+              element={user ? <Navigate replace to={"/"} /> : <LoginForm />}
+            />
+            <Route
+              path="/join"
+              element={user ? <Navigate replace to={"/"} /> : <JoinForm />}
+            />
+            <Route path="/about" user={user} loading={loading} />
+          </Routes>
+        </main>
+      </ScrollToTop>
       <Footer loading={loading} />
     </BrowserRouter>
   );
