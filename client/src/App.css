@@ -60,6 +60,7 @@ nav a.header_join-button:hover {
 
 main {
   min-height: calc(100vh - 11rem);
+  margin-top: 57px;
 }
 
 form .form-section {
@@ -73,7 +74,10 @@ form label {
 
 form input[type="text"],
 form input[type="email"],
-form input[type="password"] {
+form input[type="password"],
+form input[type="number"],
+form input[type="file"],
+form select {
   border: 1px solid lightgray;
   border-radius: 4px;
   padding: 7px;
@@ -83,9 +87,17 @@ form input[type="password"] {
 
 form input[type="text"]:focus,
 form input[type="email"]:focus,
-form input[type="password"]:focus {
+form input[type="password"]:focus,
+form input[type="number"]:focus,
+form input[type="file"]:focus,
+form select:focus {
   border: 1px solid rgb(82, 140, 228);
   outline: 5px solid rgba(48, 114, 213, 0.147);
+}
+
+form select {
+  width: 266px;
+  height: 32.5px;
 }
 
 footer {
@@ -140,7 +152,7 @@ footer p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 7.5rem);
+  min-height: calc(100vh - 11rem);
 }
 
 .home-content-container {
@@ -172,16 +184,18 @@ footer p {
 }
 
 .login-content-wrapper,
-.join-content-wrapper {
+.join-content-wrapper,
+.salon-create-content-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 7.5rem);
+  min-height: calc(100vh - 11rem);
 }
 
 .login-content-container,
-.join-content-container {
+.join-content-container,
+.salon-create-content-container {
   padding: 100px;
   display: flex;
   flex-direction: column;
@@ -190,7 +204,8 @@ footer p {
 }
 
 .login-content-container form,
-.join-content-container form {
+.join-content-container form,
+.salon-create-content-container form {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -227,6 +242,14 @@ footer p {
   width: 100%;
   margin: 20px 0;
 }
+
+.salon-create-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
 .salon-card-key,
 .salon-card {
   display: flex;
@@ -254,7 +277,8 @@ footer p {
 
 .salon-name-container,
 .salon-address-container,
-.salon-average-price-container {
+.salon-average-price-container,
+.salon-type-container {
   height: 100%;
   width: 30%;
   display: flex;
@@ -314,6 +338,16 @@ footer p {
   background-color: rgb(244, 244, 244);
 }
 
+.salon-create-button {
+  border: 1px solid rgb(1, 102, 255);
+  background-color: white;
+  color: rgb(1, 102, 255);
+}
+
+.salon-create-button:hover {
+  background-color: rgb(251, 251, 251);
+}
+
 .auth-form-submit.button {
   border: 1px solid rgb(1, 102, 255);
   background-color: rgb(1, 102, 255);
@@ -346,9 +380,7 @@ footer p {
 }
 
 .button-success:hover {
-  background-color: white;
-  border: 1px solid green;
-  color: green;
+  background-color: rgb(0, 114, 0);
 }
 
 .button-danger {
@@ -358,9 +390,7 @@ footer p {
 }
 
 .button-danger:hover {
-  background-color: white;
-  border: 1px solid red;
-  color: red;
+  background-color: rgb(199, 0, 0);
 }
 
 .border-radius-4px {
