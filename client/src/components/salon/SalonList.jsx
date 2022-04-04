@@ -36,27 +36,33 @@ function SalonList() {
       <div className="explore-page-wrapper">
         <div className="explore-page-container">
           <ul className="salon-cards-container">
+            <div className="salon-card-key">
+              <div className="salon-name-container">
+                <p className="bold">Name</p>
+              </div>
+              <div className="salon-address-container">
+                <p className="bold">Address</p>
+              </div>
+              <div className="salon-average-price-container">
+                <p className="bold">Average Price</p>
+              </div>
+            </div>
             {salons.map((salon) => (
-              <Link to={`/salons/${salon._id}`}>
-                <li key={salon._id}>
-                  <div className="salon-card border-radius-4px">
-                    <div className="left-content">
-                      <p className="bold">{salon.name}</p>
+              <div>
+                <Link to={`/salons/${salon._id}`}>
+                  <li key={salon._id} className="salon-card">
+                    <div className="salon-name-container">
+                      <p>{salon.name}</p>
+                    </div>
+                    <div className="salon-address-container">
                       <p>{`${salon.street_address} ${salon.city}, ${salon.state} ${salon.zip_code}`}</p>
                     </div>
-                    <div className="right-content">
-                      {salon.images.length ? (
-                        <img
-                          src={salon.images[0]}
-                          className="border-radius-8px"
-                        />
-                      ) : (
-                        ""
-                      )}
+                    <div className="salon-average-price-container">
+                      <p>${salon.average_price}</p>
                     </div>
-                  </div>
-                </li>
-              </Link>
+                  </li>
+                </Link>
+              </div>
             ))}
           </ul>
         </div>
