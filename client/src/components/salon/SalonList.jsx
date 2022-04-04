@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { CirclesWithBar } from "react-loader-spinner";
 import { useEffect, useState } from "react";
 
-function SalonList() {
+function SalonList({ user }) {
   const [salons, setSalons] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -36,29 +36,47 @@ function SalonList() {
       <div className="explore-page-wrapper">
         <div className="explore-page-container">
           <ul className="salon-cards-container">
+            {user ? (
+              <div className="salon-create-button-container">
+                <Link
+                  to={"/salons/create"}
+                  className="button button-l salon-create-button border-radius-4px"
+                >
+                  Add Salon
+                </Link>
+              </div>
+            ) : (
+              ""
+            )}
             <div className="salon-card-key">
               <div className="salon-name-container">
                 <p className="bold">Name</p>
               </div>
-              <div className="salon-address-container">
-                <p className="bold">Address</p>
+              <div className="salon-type-container">
+                <p className="bold">Type</p>
               </div>
               <div className="salon-average-price-container">
                 <p className="bold">Average Price</p>
               </div>
+              <div className="salon-address-container">
+                <p className="bold">Address</p>
+              </div>
             </div>
             {salons.map((salon) => (
-              <div>
+              <div key={salon._id}>
                 <Link to={`/salons/${salon._id}`}>
-                  <li key={salon._id} className="salon-card">
+                  <li className="salon-card">
                     <div className="salon-name-container">
                       <p>{salon.name}</p>
                     </div>
-                    <div className="salon-address-container">
-                      <p>{`${salon.street_address} ${salon.city}, ${salon.state} ${salon.zip_code}`}</p>
+                    <div className="salon-type-container">
+                      <p>{salon.type}</p>
                     </div>
                     <div className="salon-average-price-container">
                       <p>${salon.average_price}</p>
+                    </div>
+                    <div className="salon-address-container">
+                      <p>{`${salon.street_address} ${salon.city}, ${salon.state} ${salon.zip_code}`}</p>
                     </div>
                   </li>
                 </Link>
