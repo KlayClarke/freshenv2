@@ -264,15 +264,16 @@ footer p {
 }
 
 .salon-card {
-  border-top: 1px solid lightgray;
+  border-top: 0.25px solid lightgray;
 }
 
 .salon-card:hover {
   cursor: pointer;
-  border: 0.5px solid rgb(171, 171, 171);
-  box-shadow: -6px 10px 10px 0px rgba(216, 216, 216, 0.1);
-  -webkit-box-shadow: -6px 10px 10px 0px rgba(216, 216, 216, 0.1);
-  -moz-box-shadow: -6px 10px 10px 0px rgba(216, 216, 216, 0.1);
+  border: 0.25px solid rgb(82, 140, 228);
+  border-radius: 12px;
+  box-shadow: -6px 10px 10px 0px rgba(82, 140, 228, 0.1);
+  -webkit-box-shadow: -6px 10px 10px 0px rgba(82, 140, 228, 0.1);
+  -moz-box-shadow: -6px 10px 10px 0px rgba(82, 140, 228, 0.1);
 }
 
 .salon-name-container,
@@ -284,6 +285,7 @@ footer p {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .page-header {
