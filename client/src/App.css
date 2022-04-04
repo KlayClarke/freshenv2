@@ -252,6 +252,10 @@ ul.salon-cards-container {
   padding: 20px;
 }
 
+.salon-card p {
+  color: rgb(0, 80, 200);
+}
+
 .salon-card .right-content {
   background-color: rgb(247, 247, 248);
   width: 60%;
@@ -262,8 +266,8 @@ ul.salon-cards-container {
 
 .salon-card img {
   border: 1px solid rgb(100, 100, 100);
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
 }
 
 .page-header {
