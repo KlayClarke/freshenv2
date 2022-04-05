@@ -50,11 +50,7 @@ function RouteSwitch() {
             <Route
               path="/salons/create"
               element={
-                !user ? (
-                  <Navigate replace to={"/salons"} />
-                ) : (
-                  <SalonCreateForm />
-                )
+                user ? <SalonCreateForm /> : <Navigate replace to={"/salons"} />
               }
             />
             <Route
