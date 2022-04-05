@@ -260,7 +260,7 @@ footer p {
 }
 
 .salon-card-key {
-  border-bottom: 1px solid lightgray;
+  border-bottom: 0.25px solid lightgray;
 }
 
 .salon-card {
@@ -271,9 +271,6 @@ footer p {
   cursor: pointer;
   border: 0.25px solid rgb(82, 140, 228);
   border-radius: 12px;
-  box-shadow: -6px 10px 10px 0px rgba(82, 140, 228, 0.1);
-  -webkit-box-shadow: -6px 10px 10px 0px rgba(82, 140, 228, 0.1);
-  -moz-box-shadow: -6px 10px 10px 0px rgba(82, 140, 228, 0.1);
 }
 
 .salon-name-container,
