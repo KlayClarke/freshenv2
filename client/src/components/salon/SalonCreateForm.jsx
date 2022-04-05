@@ -11,13 +11,10 @@ function SalonCreateForm() {
           <div className="form-section">
             <label htmlFor="type">Type</label>
             <br />
-            <select name="type" id="type">
-              <option value="" disabled selected>
-                ...
-              </option>
+            <select name="type" id="type" defaultValue={"hybrid"}>
+              <option value="hybrid">Hybrid</option>
               <option value="barbershop">Barbershop</option>
               <option value="salon">Salon</option>
-              <option value="hybrid">Hybrid</option>
             </select>
           </div>
           <div className="form-section">
