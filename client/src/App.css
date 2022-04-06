@@ -297,17 +297,30 @@ footer p {
 .salon-detail-container .top-section {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
-.salon-detail-container .top-section {
+.salon-detail-container .top-section,
+.salon-detail-container .bottom-section {
   border: 1px solid lightgray;
-  padding: 100px;
+  min-height: 30%;
+}
+
+.salon-detail-container .top-section .left {
+  display: flex;
+  justify-content: center;
 }
 
 .salon-detail-container .top-section .left img {
   max-width: 400px;
-  max-height: 400px;
+}
+
+.salon-detail-container .top-section .right {
+  text-align: end;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .salon-detail-container .top-section .right h3 {
@@ -445,9 +458,23 @@ footer p {
   margin-right: 10px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
   .salon-detail-container .top-section {
     flex-direction: column;
+  }
+
+  .salon-detail-container .top-section .left {
+    width: 100%;
+  }
+
+  .salon-detail-container .top-section .left img {
+    max-width: 100%;
+  }
+
+  .salon-detail-container .top-section .right {
+    margin: 0;
+    width: 100%;
+    text-align: start;
   }
 }
 
