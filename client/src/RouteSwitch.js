@@ -15,20 +15,32 @@ function RouteSwitch() {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
 
+  console.log(user);
+
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
     if (localStorage.getItem("freshen_user_data")) {
-      const userId = JSON.parse(localStorage.getItem("freshen_user_data"))[
+      const userID = JSON.parse(localStorage.getItem("freshen_user_data"))[
         "id"
       ];
+      const userToken = JSON.parse(localStorage.getItem("freshen_user_data"))[
+        "token"
+      ];
       axios
-        .get("http://localhost:9000/users/" + userId, { signal })
+        .get("http://localhost:9000/users/" + userID, { signal })
         .then((response) => {
           setTimeout(() => {
             setLoading(false);
           }, 500);
-          setUser(response.data);
+          setUser({
+            id: userID,
+            first_name: response.data.first_name,
+            last_name: response.data.last_name,
+            email: response.data.email,
+            password: response.data.password,
+            token: userToken,
+          });
         })
         .catch((err) => {
           new Error(err);
@@ -50,7 +62,11 @@ function RouteSwitch() {
             <Route
               path="/salons/create"
               element={
-                user ? <SalonCreateForm /> : <Navigate replace to={"/salons"} />
+                user ? (
+                  <SalonCreateForm user={user} />
+                ) : (
+                  <Navigate replace to={"/salons"} />
+                )
               }
             />
             <Route
