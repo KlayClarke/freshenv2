@@ -292,6 +292,8 @@ footer p {
 
 .salon-detail-container {
   width: 90%;
+  display: flex;
+  justify-content: center;
 }
 
 .salon-detail-container .top-section {
@@ -316,15 +318,11 @@ footer p {
 }
 
 .salon-detail-container .top-section .right {
-  text-align: end;
-  width: 40%;
+  text-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-}
-
-.salon-detail-container .top-section .right h3 {
-  margin-top: 50px;
 }
 
 .button:hover {
@@ -458,7 +456,13 @@ footer p {
   margin-right: 10px;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 950px) {
+  .salon-detail-container .top-section {
+    justify-content: inherit;
+  }
+}
+
+@media (max-width: 650px) {
   .salon-detail-container .top-section {
     flex-direction: column;
   }
@@ -476,9 +480,7 @@ footer p {
     width: 100%;
     text-align: start;
   }
-}
 
-@media (max-width: 500px) {
   footer .social-media-text {
     display: none;
   }
