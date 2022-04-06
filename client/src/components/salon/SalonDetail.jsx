@@ -65,10 +65,10 @@ function SalonDetail() {
             </div>
             <div className="right">
               <h1>{salon.name}</h1>
-              <h3>
+              <h2>
                 {salon.street_address} {salon.city}, {salon.state}{" "}
                 {salon.zip_code}
-              </h3>
+              </h2>
             </div>
           </div>
           <div className="bottom-section border-radius-10px"></div>
