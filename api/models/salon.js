@@ -6,7 +6,7 @@ const SalonSchema = new Schema({
   name: { type: String, required: true },
   type: { type: String, required: true },
   average_price: { type: Number, required: true },
-  images: [{ type: String, required: false }],
+  image: { type: String, required: false },
   street_address: { type: String, required: true },
   city: { type: String, required: true },
   state: { type: String, required: true },
