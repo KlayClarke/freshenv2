@@ -12,7 +12,7 @@ function JoinForm() {
           ></FontAwesomeIcon>{" "}
           Join with Google
         </button>
-        <form action="http://localhost:9000/users" method="POST">
+        <form action={process.env.REACT_APP_API_USER_ENDPOINT} method="POST">
           <div className="form-section">
             <label htmlFor="first_name">First Name</label>
             <br />
