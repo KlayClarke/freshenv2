@@ -13,7 +13,6 @@ function SalonDetail() {
   useEffect(() => {
     async function fetchData() {
       const response = await axios(`http://localhost:9000/salons/${salonid}`);
-      console.log(response.data);
       if (!response.data) {
         setError(true);
       } else {
@@ -43,10 +42,25 @@ function SalonDetail() {
     );
   } else {
     return (
-      <div>
-        <h1 className="page-header"></h1>
-        <h1>{salon.name}</h1>
-        <h3>{salon.street_address}</h3>
+      <div className="salon-detail-wrapper">
+        <div className="salon-detail-container">
+          <div className="top-section">
+            <div className="left">
+              {salon.image && <img src={salon.image} alt="salon" />}
+              {!salon.image && (
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png"
+                  alt="image not found"
+                />
+              )}
+            </div>
+            <div className="right">
+              <h1>{salon.name}</h1>
+              <h3>{salon.street_address}</h3>
+            </div>
+          </div>
+          <div className="bottom-section"></div>
+        </div>
       </div>
     );
   }
