@@ -276,11 +276,16 @@ footer p {
 .salon-average-price-container,
 .salon-type-container {
   height: 100%;
-  width: 30%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  border-right: 1px solid rgb(240, 240, 240);
+}
+
+.salon-address-container {
+  border-right: none;
 }
 
 .salon-detail-wrapper {
@@ -288,12 +293,6 @@ footer p {
   justify-content: center;
   margin-top: 57px;
   padding: 25px;
-}
-
-.salon-detail-container {
-  width: 90%;
-  display: flex;
-  justify-content: center;
 }
 
 .salon-detail-container .top-section {
@@ -318,6 +317,7 @@ footer p {
 }
 
 .salon-detail-container .top-section .right {
+  padding: 50px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -463,6 +463,14 @@ footer p {
 }
 
 @media (max-width: 650px) {
+  .salon-cards-container {
+    font-size: small;
+  }
+
+  .salon-type-container {
+    display: none;
+  }
+
   .salon-detail-container .top-section {
     flex-direction: column;
   }
@@ -478,7 +486,7 @@ footer p {
   .salon-detail-container .top-section .right {
     margin: 0;
     width: 100%;
-    text-align: start;
+    padding: 0px;
   }
 
   footer .social-media-text {
