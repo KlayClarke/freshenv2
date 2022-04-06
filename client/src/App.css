@@ -286,12 +286,23 @@ footer p {
 .salon-detail-wrapper {
   display: flex;
   justify-content: center;
-  margin-top: 37px;
+  margin-top: 57px;
+  padding: 25px;
 }
 
 .salon-detail-container {
   width: 90%;
+}
+
+.salon-detail-container .top-section {
   display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.salon-detail-container .top-section {
+  border: 1px solid lightgray;
+  padding: 100px;
 }
 
 .salon-detail-container .top-section .left img {
@@ -299,8 +310,8 @@ footer p {
   max-height: 400px;
 }
 
-.salon-detail-container .top-section .right .page-header {
-  padding-bottom: 30px;
+.salon-detail-container .top-section .right h3 {
+  margin-top: 50px;
 }
 
 .button:hover {
@@ -432,6 +443,12 @@ footer p {
 
 .google-icon {
   margin-right: 10px;
+}
+
+@media (max-width: 800px) {
+  .salon-detail-container .top-section {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 500px) {
