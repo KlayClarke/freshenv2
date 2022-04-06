@@ -4,8 +4,8 @@ import { useState } from "react";
 function SalonCreateForm({ user }) {
   const [name, setName] = useState("");
   const [type, setType] = useState("");
-  const [averagePrice, setAveragePrice] = useState(0);
-  const [images, setImages] = useState([]);
+  const [averagePrice, setAveragePrice] = useState();
+  const [image, setImage] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
@@ -20,7 +20,7 @@ function SalonCreateForm({ user }) {
           name,
           type,
           average_price: averagePrice,
-          images,
+          image,
           street_address: streetAddress,
           city,
           state,
@@ -82,9 +82,14 @@ function SalonCreateForm({ user }) {
             />
           </div>
           <div className="form-section">
-            <label htmlFor="images">Images</label>
+            <label htmlFor="image">Image URL</label>
             <br />
-            <input type="file" id="images" multiple />
+            <input
+              type="text"
+              id="image"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+            />
           </div>
           <div className="form-section">
             <label htmlFor="street_address">Street Address</label>
