@@ -12,7 +12,9 @@ function SalonDetail() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios(`http://localhost:9000/salons/${salonid}`);
+      const response = await axios(
+        process.env.REACT_APP_API_SALON_ENDPOINT + `/${salonid}`
+      );
       if (!response.data) {
         setError(true);
       } else {
@@ -44,13 +46,20 @@ function SalonDetail() {
     return (
       <div className="salon-detail-wrapper">
         <div className="salon-detail-container">
-          <div className="top-section">
+          <div className="top-section border-radius-10px">
             <div className="left">
-              {salon.image && <img src={salon.image} alt="salon" />}
+              {salon.image && (
+                <img
+                  src={salon.image}
+                  alt="salon"
+                  className="border-radius-8px"
+                />
+              )}
               {!salon.image && (
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png"
                   alt="image not found"
+                  className="border-radius-8px"
                 />
               )}
             </div>
