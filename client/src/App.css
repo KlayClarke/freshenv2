@@ -224,7 +224,6 @@ footer p {
 }
 
 .explore-page-wrapper {
-  min-height: calc(100vh - 7.5rem);
   display: flex;
   justify-content: center;
   margin-top: 37px;
@@ -235,7 +234,6 @@ footer p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .salon-cards-container {
