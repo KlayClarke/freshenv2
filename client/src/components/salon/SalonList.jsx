@@ -9,7 +9,7 @@ function SalonList({ user }) {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios(`http://localhost:9000/salons/`);
+      const response = await axios(process.env.REACT_APP_API_SALON_ENDPOINT);
       setSalons(response.data);
       setTimeout(() => {
         setLoading(false);
