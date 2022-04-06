@@ -282,6 +282,7 @@ footer p {
   justify-content: center;
   text-align: center;
   border-right: 1px solid rgb(240, 240, 240);
+  padding: 20px;
 }
 
 .salon-address-container {
@@ -317,7 +318,7 @@ footer p {
 }
 
 .salon-detail-container .top-section .right {
-  padding: 50px;
+  padding: 25px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -480,7 +481,7 @@ footer p {
   }
 
   .salon-detail-container .top-section .left img {
-    max-width: 100%;
+    max-width: 80%;
   }
 
   .salon-detail-container .top-section .right {
@@ -492,4 +493,8 @@ footer p {
   footer .social-media-text {
     display: none;
   }
+}
+
+@media (max-width: 550px) {
+  /* navbar hamburger */
 }
