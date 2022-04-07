@@ -121,12 +121,12 @@ footer ul {
   align-items: center;
 }
 
-footer svg {
+footer i {
   font-size: xx-large;
   transition: 0.25s ease;
 }
 
-footer svg:hover {
+footer i:hover {
   color: rgb(1, 102, 255);
 }
 

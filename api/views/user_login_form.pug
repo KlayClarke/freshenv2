@@ -2,7 +2,9 @@ extends layout
 block content 
   .login-content-wrapper 
     .login-content-container 
-      button(class='auth-login button border-radius-4px') Log in with Google 
+      button(class='auth-login button border-radius-4px') 
+        i.fa.fa-brands.fa-google 
+        |  Log in with Google 
       form(action="#" method='POST')
         .form-section 
           label(for="email") Email 
