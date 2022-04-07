@@ -5,6 +5,14 @@ const jwt = require("jsonwebtoken");
 const passport = require("passport");
 const { body, validationResult, sanitizeBody } = require("express-validator");
 
+exports.user_join_form = (req, res) => {
+  res.render("user_join_form");
+};
+
+exports.user_login_form = (req, res) => {
+  res.render("user_login_form");
+};
+
 // return all users
 exports.user_list = function (req, res) {
   User.find().exec(function (err, list_users) {
@@ -46,13 +54,10 @@ exports.user_create = [
     if (!errors.isEmpty()) return res.json(errors.array());
     User.findOne({ email: req.body.email }).exec(function (err, found_user) {
       if (err) return next(err);
-      if (found_user)
-        return res.json({
-          error: "User with same email found in database",
-        });
+      if (found_user) return res.render("");
       user.save(function (err) {
         if (err) return next(err);
-        res.json({ success: "User successfully created" });
+        res.render("home");
       });
     });
   },
@@ -109,7 +114,7 @@ exports.user_login = [
           }
         );
       } else {
-        return res.json("User credentials incorrect");
+        return res.render("home");
       }
     });
   },
