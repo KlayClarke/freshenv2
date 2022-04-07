@@ -11,7 +11,7 @@ var cors = require("cors");
 var usersRouter = require("./routes/userRoutes");
 var salonsRouter = require("./routes/salonRoutes");
 var reviewsRouter = require("./routes/reviewRoutes");
-var testAPIRouter = require("./routes/testAPI");
+var indexRouter = require("./routes/index");
 
 var app = express();
 
@@ -26,10 +26,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/salons", salonsRouter);
 app.use("/reviews", reviewsRouter);
-app.use("/testAPI", testAPIRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
