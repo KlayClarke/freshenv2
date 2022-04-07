@@ -1,0 +1,30 @@
+extends layout
+block content
+  .join-content-wrapper 
+    .join-content-container 
+      button(class='auth-join button border-radius-4px') Join with Google 
+      form(action="#" method='POST')
+        .form-section 
+          label(for='first_name') First Name 
+          br
+          input(type="text" id='first_name' name='first_name')
+          br
+        .form-section 
+          label(for='last_name') Last Name 
+          br
+          input(type="text" id='last_name' name='last_name')
+          br
+        .form-section 
+          label(for="email") Email 
+          br
+          input(type="email" id='email' name='email')
+          br
+        .form-section 
+          label(for="password") Password 
+          br
+          input(type="password" id='password' name='password')
+          br
+        button(class='auth-form-submit button border-radius-4px') Join 
+      p Already have an account?
+        a(href="#" class='blue') Log In 
+       
