@@ -1,0 +1,14 @@
+extends layout 
+block content 
+  .salon-detail-wrapper 
+    .salon-detail-container
+      div(class='top-section border-radius-10px')
+        .left 
+          if salon.image 
+            img(src={salon.image}, alt="salon" class='border-radius-8px')
+          else 
+            img(src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png", alt="image not found" class='border-radius-8px')
+        .right 
+          h1= salon.image 
+          h2 #{salon.street_address} #{salon.city}, #{salon.state} #{salon.zip_code}
+      div(class='bottom-section border-radius-10px')
