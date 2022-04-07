@@ -1,0 +1,21 @@
+nav 
+  ul 
+    li 
+      a(href="#" id='header_logo') freshen 
+  ul 
+    li  
+      a(href="#") Explore 
+    li 
+      a(href="#") About 
+    li 
+      span.divider 
+    if user
+      li 
+        a(href="#") Account 
+      li 
+        button(class='button button-s header_join-button border-radius-6px') Logout
+    else 
+      li 
+        a(href="#") Log In 
+      li 
+        a(href="#" class='button button-s header_join-button border-radius-6px') Join   
