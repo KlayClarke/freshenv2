@@ -1,10 +1,9 @@
-extends layout 
-block flash 
-  if success && success.length
-    .alert.alert-wraning.alert-dismissable.fade.show(role='alert')
-      p= success 
-      button(type='button' class='close-button' data-bs-dismiss='alert' aria-label='close')
-  if error && error.length 
-    .alert.alert-danger.alert-dismissable.fade.show(role='alert')
-      p= error 
-      button(type='button' class='close-button' data-bs-dismiss='alert' aria-label='close')
+if success && success.length
+  .alert.alert-success.border-radius-8px(role='alert')
+    i.fa.fa-solid.fa-check
+    p= success 
+if error && error.length 
+  .alert.alert-danger.border-radius-8px(role='alert')
+    i.fa.fa-solid.fa-exclamation
+    p= error[0] 
+
