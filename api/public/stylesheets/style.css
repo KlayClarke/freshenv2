@@ -5,6 +5,10 @@
   font-weight: 300;
 }
 
+body {
+  position: relative;
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -28,7 +32,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 3.5rem;
+  height: 3em;
   border-bottom: 0.5px solid rgb(201, 201, 201);
   position: fixed;
   top: 0;
@@ -60,8 +64,9 @@ nav a.header_join-button:hover {
 }
 
 main {
+  position: relative;
+  margin-top: 3em;
   min-height: calc(100vh - 9.5rem);
-  margin-top: 3.5rem;
 }
 
 form .form-section {
@@ -101,35 +106,6 @@ form select {
   height: 32.5px;
 }
 
-footer {
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  height: 6rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(247, 247, 248);
-  border-top: 0.5px solid rgb(201, 201, 201);
-}
-
-footer ul {
-  display: flex;
-  gap: 35px;
-  justify-content: center;
-  align-items: center;
-}
-
-footer i {
-  font-size: x-large;
-  transition: 0.25s ease;
-}
-
-footer i:hover {
-  color: rgb(1, 102, 255);
-}
-
 #header_logo {
   font-family: "Concert One", sans-serif;
   font-size: 30px;
@@ -137,12 +113,12 @@ footer i:hover {
 }
 
 .alert {
-  max-width: 50%;
+  max-width: 100%;
   margin: auto;
   padding: 15px;
   display: flex;
   align-items: center;
-  position: relative;
+  justify-content: center;
 }
 
 .alert i {
