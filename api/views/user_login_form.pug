@@ -1,21 +1,20 @@
 extends layout 
 block content 
-  .login-content-wrapper 
-    .login-content-container 
-      button(class='auth-login button border-radius-4px') 
-        i.fa.fa-brands.fa-google 
-        |  Log in with Google 
-      form(action="#" method='POST')
-        .form-section 
-          label(for="username") Username 
-          br
-          input(type="text" id='username' name='username')
-          br
-        .form-section 
-          label(for="password") Password 
-          br
-          input(type="password" id='password' name='password')
-          br
-        button(class='auth-form-submit button border-radius-4px') Log In 
-      p Don't have an account?
-        a(href="/join" class='blue')  Join 
+  .login-content-container 
+    button(class='auth-login button border-radius-4px') 
+      i.fa.fa-brands.fa-google 
+      |  Log in with Google 
+    form(action="#" method='POST')
+      .form-section 
+        label(for="username") Username 
+        br
+        input(type="text" id='username' name='username')
+        br
+      .form-section 
+        label(for="password") Password 
+        br
+        input(type="password" id='password' name='password')
+        br
+      button(class='auth-form-submit button border-radius-4px') Log In 
+    p Don't have an account?
+      a(href="/join" class='blue')  Join 
