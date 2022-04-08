@@ -15,6 +15,7 @@ var LocalStrategy = require("passport-local");
 var User = require("./models/user");
 
 var indexRouter = require("./routes/index");
+var userRouter = require("./routes/userRoutes");
 var salonsRouter = require("./routes/salonRoutes");
 var reviewsRouter = require("./routes/reviewRoutes");
 
@@ -59,6 +60,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/", indexRouter);
+app.use("/", userRouter);
 app.use("/salons", salonsRouter);
 app.use("/reviews", reviewsRouter);
 
