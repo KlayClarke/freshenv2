@@ -9,11 +9,11 @@ nav
       a(href="#") About 
     li 
       span.divider 
-    if user
+    if currentUser
       li 
         a(href="#") Account 
       li 
-        button(class='button button-s header_join-button border-radius-6px') Logout
+        a(href='/logout' class='button button-s header_join-button border-radius-6px') Logout
     else 
       li 
         a(href="/login") Log In 

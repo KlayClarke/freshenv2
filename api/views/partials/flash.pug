@@ -1,0 +1,10 @@
+extends layout 
+block flash 
+  if success && success.length
+    .alert.alert-wraning.alert-dismissable.fade.show(role='alert')
+      p= success 
+      button(type='button' class='close-button' data-bs-dismiss='alert' aria-label='close')
+  if error && error.length 
+    .alert.alert-danger.alert-dismissable.fade.show(role='alert')
+      p= error 
+      button(type='button' class='close-button' data-bs-dismiss='alert' aria-label='close')

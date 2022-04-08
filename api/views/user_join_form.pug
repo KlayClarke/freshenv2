@@ -7,19 +7,14 @@ block content
         |  Join with Google 
       form(action="#" method='POST')
         .form-section 
-          label(for='first_name') First Name 
-          br
-          input(type="text" id='first_name' name='first_name')
-          br
-        .form-section 
-          label(for='last_name') Last Name 
-          br
-          input(type="text" id='last_name' name='last_name')
-          br
-        .form-section 
           label(for="email") Email 
           br
           input(type="email" id='email' name='email')
+          br
+        .form-section 
+          label(for="username") Username 
+          br
+          input(type="text" id='username' name='username') 
           br
         .form-section 
           label(for="password") Password 
@@ -29,4 +24,3 @@ block content
         button(class='auth-form-submit button border-radius-4px') Join 
       p Already have an account?
         a(href="/login" class='blue')  Log In 
-       
