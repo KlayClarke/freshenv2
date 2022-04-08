@@ -122,7 +122,7 @@ footer ul {
 }
 
 footer i {
-  font-size: xx-large;
+  font-size: x-large;
   transition: 0.25s ease;
 }
 
@@ -488,10 +488,6 @@ footer p {
     margin: 0;
     width: 100%;
     padding: 0px;
-  }
-
-  footer .social-media-text {
-    display: none;
   }
 }
 
