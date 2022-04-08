@@ -1,9 +1,10 @@
 if success && success.length
-  .alert.alert-success.border-radius-8px(role='alert')
+  .alert.alert-success(role='alert')
     i.fa.fa-solid.fa-check
     p= success 
-if error && error.length 
-  .alert.alert-danger.border-radius-8px(role='alert')
+if errors && errors.length 
+  .alert.alert-danger(role='alert')
     i.fa.fa-solid.fa-exclamation
-    p= error[0] 
+      each error in errors 
+        p= error
 
