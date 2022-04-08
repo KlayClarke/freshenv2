@@ -2,9 +2,9 @@ extends layout
 block content 
   .home-content-wrapper 
     .home-content-container 
-      if user 
+      if currentUser 
         h1
-          span Welcome back, #{user.first_name}! 
+          span Welcome back, #{currentUser.username}! 
       else 
         h1 Whether you are a customer searching for a new hairstylist or a hairstylist searching for new customers, 
           span freshen 
