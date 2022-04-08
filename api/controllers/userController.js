@@ -50,7 +50,7 @@ exports.user_login_post = [
       req.flash("error", errors.array());
       res.redirect("/login");
     }
-    req.flash("success", "Welcome back!");
+    req.flash("success", "Welcome");
     const redirectUrl = req.session.returnTo || "/";
     delete req.session.returnTo;
     console.log("successfully logged in");
@@ -60,7 +60,7 @@ exports.user_login_post = [
 
 exports.user_logout_post = (req, res, next) => {
   req.logout();
-  req.flash("success", "Successfully logged out");
+  req.flash("success", "Logged out");
   res.redirect("/");
 };
 
