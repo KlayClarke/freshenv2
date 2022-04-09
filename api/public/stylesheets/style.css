@@ -117,8 +117,10 @@ form select {
 }
 
 .alert {
-  max-width: 100%;
-  margin: auto;
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
   padding: 15px;
   display: flex;
   align-items: center;
