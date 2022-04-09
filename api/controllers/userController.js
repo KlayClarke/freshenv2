@@ -28,14 +28,47 @@ exports.user_join_post = [
     }
     const { email, username, password } = req.body;
     const user = new User({ email, username });
-    const registeredUser = await User.register(user, password);
-    req.login(registeredUser, (err) => {
-      if (err) return next(err);
-      req.flash("success", "Welcome to freshen");
-      const redirectUrl = req.session.returnTo || "/";
-      delete req.session.returnTo;
-      res.redirect(redirectUrl);
-    });
+    try {
+      const registeredUser = await User.register(user, password);
+      req.login(registeredUser, (err) => {
+        if (err) {
+          req.flash("error", err);
+          res.redirect("/join");
+        }
+        req.flash("success", "Welcome to freshen");
+        const redirectUrl = req.session.returnTo || "/";
+        delete req.session.returnTo;
+        return res.redirect(redirectUrl);
+      });
+    } catch (err) {
+      async.parallel(
+        {
+          user_with_same_email: function (callback) {
+            User.find({ email: req.body.email }).exec(callback);
+          },
+          user_with_same_username: function (callback) {
+            User.find({ username: req.body.username }).exec(callback);
+          },
+        },
+        function (err, results) {
+          if (err) return next(err);
+          if (results.user_with_same_email.length) {
+            req.flash(
+              "error",
+              "An account with the same email address is already registered"
+            );
+            return res.redirect("/join");
+          }
+          if (results.user_with_same_username.length) {
+            req.flash(
+              "error",
+              "An account with the same username is already registered"
+            );
+            return res.redirect("/join");
+          }
+        }
+      );
+    }
   },
 ];
 
@@ -46,14 +79,12 @@ exports.user_login_post = [
   async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      console.log("errors", errors);
       req.flash("error", errors.array());
       res.redirect("/login");
     }
-    req.flash("success", "Welcome");
+    req.flash("success", `Welcome back, ${req.body.username}`);
     const redirectUrl = req.session.returnTo || "/";
     delete req.session.returnTo;
-    console.log("successfully logged in");
     res.redirect(redirectUrl);
   },
 ];
