@@ -63,10 +63,6 @@ nav a.header_join-button:hover {
   color: white;
 }
 
-.undernav {
-  display: none;
-}
-
 main {
   position: relative;
   margin-top: 3em;
@@ -503,21 +499,4 @@ form select {
 }
 
 @media (max-width: 550px) {
-  /* navbar hamburger */
-  nav .to-hide {
-    display: none;
-  }
-  .undernav {
-    border-bottom: 0.5px solid rgb(201, 201, 201);
-    width: 100%;
-    height: 2.5em;
-    margin-top: 3em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .undernav ul {
-    display: flex;
-    gap: 100px;
-  }
 }
