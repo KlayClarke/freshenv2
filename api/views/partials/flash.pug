@@ -2,9 +2,12 @@ if success && success.length
   .alert.alert-success(role='alert')
     i.fa.fa-solid.fa-check
     p= success 
-if errors && errors.length 
+if error && error.length 
   .alert.alert-danger(role='alert')
     i.fa.fa-solid.fa-exclamation
-      each error in errors 
-        p= error
+    if error.length > 1
+      each err in error
+        p [#{err.msg} #{err.param}]  
+    else 
+      p #{error.msg ? `${error.msg} ${error.params}` : error}  
 
