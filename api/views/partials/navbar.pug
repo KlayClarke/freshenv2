@@ -4,18 +4,18 @@ nav
       a(href="/" id='header_logo') freshen 
   ul 
     li  
-      a(href="/explore") Explore 
+      a.to-hide(href="/explore") Explore 
     li 
-      a(href="/about") About 
+      a.to-hide(href="/about") About 
     li 
-      span.divider 
+      span.divider.to-hide 
     if currentUser
       li 
-        a(href="/account") Account 
+        a.to-hide(href="/account") Account 
       li 
         a(href='/logout' class='button button-s header_join-button border-radius-6px') Logout
     else 
       li 
-        a(href="/login") Log In 
+        a.to-hide(href="/login") Log In 
       li 
         a(href="/join" class='button button-s header_join-button border-radius-6px') Join   

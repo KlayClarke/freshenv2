@@ -32,7 +32,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 3em;
+  height: 3rem;
   border-bottom: 0.5px solid rgb(201, 201, 201);
   position: fixed;
   top: 0;
@@ -61,6 +61,10 @@ nav a:hover {
 
 nav a.header_join-button:hover {
   color: white;
+}
+
+.undernav {
+  display: none;
 }
 
 main {
@@ -488,4 +492,20 @@ form select {
 
 @media (max-width: 550px) {
   /* navbar hamburger */
+  nav .to-hide {
+    display: none;
+  }
+  .undernav {
+    border-bottom: 0.5px solid rgb(201, 201, 201);
+    width: 100%;
+    height: 2.5em;
+    margin-top: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .undernav ul {
+    display: flex;
+    gap: 100px;
+  }
 }
