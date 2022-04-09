@@ -140,12 +140,21 @@ form select {
   color: rgb(20, 88, 36);
 }
 
+.not-found-content-container {
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 3rem);
+}
+
 .home-content-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 9.5rem);
+  min-height: calc(100vh - 3rem);
 }
 
 .home-content-container {
@@ -179,7 +188,7 @@ form select {
 .login-content-container,
 .join-content-container,
 .salon-create-content-container {
-  min-height: calc(100vh - 9.5rem);
+  min-height: calc(100vh - 3rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
