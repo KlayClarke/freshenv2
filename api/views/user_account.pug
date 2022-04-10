@@ -1,0 +1,26 @@
+extends layout 
+block content 
+  .user-account-content-container
+    .form-card.border-radius-8px
+      form(action="")
+        h1 Update Password 
+        br
+        .form-section
+          label(for="current_password") Current Password 
+          br
+          input(type="password" id='current_password' name='current_password' required)
+          br
+        .form-section 
+          label(for="new_password") New Password 
+          br
+          input(type="password" id='new_password' name='new_password' required) 
+          br
+        .form-section
+          label(for="new_password_confirm") Confirm New Password 
+          br
+          input(type="password" id='new_password_confirm' name='new_password_confirm' required)
+          br
+        button.button.auth-form-submit.border-radius-4px Update Password 
+    .form-card.border-radius-8px 
+      form(action="/account" method='POST') 
+        button.button.button-m.button-danger.border-radius-4px(href='#') Delete Account
