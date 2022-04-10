@@ -32,7 +32,7 @@ exports.user_join_post = [
       const registeredUser = await User.register(user, password);
       req.login(registeredUser, (err) => {
         if (err) {
-          req.flash("error", err);
+          req.flash("error", err.message);
           res.redirect("/join");
         }
         req.flash("success", "Welcome to freshen");
@@ -51,7 +51,10 @@ exports.user_join_post = [
           },
         },
         function (err, results) {
-          if (err) return next(err);
+          if (err) {
+            req.flash("error", err.message);
+            res.redirect("/join");
+          }
           if (results.user_with_same_email.length) {
             req.flash(
               "error",
@@ -100,6 +103,47 @@ exports.user_account_get = (req, res, next) => {
   res.render("user_account");
 };
 
+// user password update
+exports.user_account_password_update_post = [
+  body("current_password").trim().escape(),
+  body("new_password").trim().escape(),
+  body("new_password_confirm").trim().escape(),
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      req.flash("error", "Something went wrong");
+      return res.redirect("/account");
+    }
+    async.parallel(
+      {
+        user: function (callback) {
+          User.findById(req.user._id).exec(callback);
+        },
+      },
+      function (err, results) {
+        if (err) {
+          req.flash("error", err.message);
+          return res.redirect("/account");
+        }
+        if (results.user && results.user._id) {
+          results.user.changePassword(
+            req.body.current_password,
+            req.body.new_password,
+            function (err) {
+              if (err) {
+                req.flash("error", err.message);
+                return res.redirect("/account");
+              }
+              req.flash("success", "Password updated");
+              return res.redirect("/");
+            }
+          );
+        }
+      }
+    );
+  },
+];
+
 // user account delete post
 exports.user_account_delete_post = (req, res, next) => {
   async.parallel(
@@ -123,44 +167,3 @@ exports.user_account_delete_post = (req, res, next) => {
     }
   );
 };
-
-// user password update
-exports.user_account_password_update_post = [
-  body("current_password").trim().escape(),
-  body("new_password").trim().escape(),
-  body("new_password_confirm").trim().escape(),
-  (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      req.flash("error", "Something went wrong");
-      return res.redirect("/account");
-    }
-    async.parallel(
-      {
-        user: function (callback) {
-          User.findById(req.user._id).exec(callback);
-        },
-      },
-      function (err, results) {
-        if (err) {
-          req.flash("error", "Something went wrong");
-          return res.redirect("/account");
-        }
-        if (results.user && results.user._id) {
-          results.user.changePassword(
-            req.body.current_password,
-            req.body.new_password,
-            function (err) {
-              if (err) {
-                req.flash("error", "Something went wrong");
-                return res.redirect("/account");
-              }
-              req.flash("success", "Password updated");
-              return res.redirect("/");
-            }
-          );
-        }
-      }
-    );
-  },
-];
