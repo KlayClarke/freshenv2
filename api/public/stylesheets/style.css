@@ -471,6 +471,18 @@ form select {
 }
 
 @media (max-width: 950px) {
+  .home-content-container {
+    width: 90%;
+    text-align: center;
+  }
+
+  .home-content-container form {
+    flex-direction: column;
+  }
+
+  #map {
+    width: 95%;
+  }
   .alert {
     max-width: 100%;
   }
@@ -480,6 +492,10 @@ form select {
 }
 
 @media (max-width: 650px) {
+  .home-content-container a {
+    display: none;
+  }
+
   .salon-cards-container {
     font-size: small;
   }
