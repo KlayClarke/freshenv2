@@ -110,12 +110,11 @@ exports.user_account_delete_post = (req, res, next) => {
     },
     function (err, results) {
       if (err) {
-        console.log("akjsdjksdl");
-        req.flash("error", "Something went wrong! Please try again.");
+        req.flash("error", "Something went wrong");
         return res.redirect("/account");
       }
-      if (results.user) {
-        User.findByIdAndDelete(req.user._id, function deleteUser(err) {
+      if (results.user && results.user._id) {
+        User.findByIdAndDelete(results.user._id, function deleteUser(err) {
           if (err) return next(err);
           req.flash("success", "Your account has been deleted");
           res.redirect("/");
@@ -124,3 +123,44 @@ exports.user_account_delete_post = (req, res, next) => {
     }
   );
 };
+
+// user password update
+exports.user_account_password_update_post = [
+  body("current_password").trim().escape(),
+  body("new_password").trim().escape(),
+  body("new_password_confirm").trim().escape(),
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      req.flash("error", "Something went wrong");
+      return res.redirect("/account");
+    }
+    async.parallel(
+      {
+        user: function (callback) {
+          User.findById(req.user._id).exec(callback);
+        },
+      },
+      function (err, results) {
+        if (err) {
+          req.flash("error", "Something went wrong");
+          return res.redirect("/account");
+        }
+        if (results.user && results.user._id) {
+          results.user.changePassword(
+            req.body.current_password,
+            req.body.new_password,
+            function (err) {
+              if (err) {
+                req.flash("error", "Something went wrong");
+                return res.redirect("/account");
+              }
+              req.flash("success", "Password updated");
+              return res.redirect("/");
+            }
+          );
+        }
+      }
+    );
+  },
+];
