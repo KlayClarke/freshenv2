@@ -19,7 +19,11 @@ router
     user_controller.user_login_post
   );
 
-router.get("/account");
+router
+  .route("/account")
+  .get(user_controller.user_account_get)
+  .patch()
+  .post(user_controller.user_account_delete_post);
 
 router.get("/logout", user_controller.user_logout_post);
 
