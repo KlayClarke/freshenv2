@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.render("home", { messages: req.flash("info") });
+  res.render("home");
 });
 
 router.get("/flash", (req, res) => {
