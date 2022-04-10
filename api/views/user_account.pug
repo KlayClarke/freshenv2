@@ -2,25 +2,35 @@ extends layout
 block content 
   .user-account-content-container
     .form-card.border-radius-8px
-      form(action="")
+      h1 Account Details
+      br
+      form(action="") 
+        p Email: #{currentUser.email}
+        br
+        p Username: #{currentUser.username}
+        br
+    .form-card.border-radius-8px
+      form(action="/account/update" method='POST')
         h1 Update Password 
         br
         .form-section
           label(for="current_password") Current Password 
           br
-          input(type="password" id='current_password' name='current_password' required)
+          input(type="password" id='current_password' name='current_password')
           br
         .form-section 
           label(for="new_password") New Password 
           br
-          input(type="password" id='new_password' name='new_password' required) 
+          input(type="password" id='new_password' name='new_password') 
           br
         .form-section
           label(for="new_password_confirm") Confirm New Password 
           br
-          input(type="password" id='new_password_confirm' name='new_password_confirm' required)
+          input(type="password" id='new_password_confirm' name='new_password_confirm')
           br
-        button.button.auth-form-submit.border-radius-4px Update Password 
+        button.button.auth-form-submit.border-radius-4px(href='#') Update Password 
     .form-card.border-radius-8px 
-      form(action="/account" method='POST') 
+      p To permanently delete your account:
+      br
+      form(action="/account/delete" method='POST') 
         button.button.button-m.button-danger.border-radius-4px(href='#') Delete Account
