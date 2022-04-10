@@ -1,0 +1,18 @@
+#nav_overlay.hide
+  .overlay-content
+    ul 
+      li 
+        a(href="/explore") Explore 
+      li 
+        a(href="/about") About 
+      if currentUser 
+        li 
+          a(href="/account") Account 
+        li 
+          a(href="/logout") Logout 
+      else 
+        li 
+          a(href="/login") Log In 
+        li 
+          a(href="/join") Join       
+script(src="/javascripts/navFunctionality.js") 
