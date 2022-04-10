@@ -114,6 +114,10 @@ exports.user_account_password_update_post = [
       req.flash("error", "Something went wrong");
       return res.redirect("/account");
     }
+    if (req.body.new_password !== req.body.new_password_confirm) {
+      req.flash("error", "Passwords must match");
+      return res.redirect("/account");
+    }
     async.parallel(
       {
         user: function (callback) {
