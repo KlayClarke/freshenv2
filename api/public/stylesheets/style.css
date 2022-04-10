@@ -196,9 +196,14 @@ form select {
   justify-content: space-evenly;
 }
 
+.user-account-content-container {
+  gap: 30px;
+}
+
 .login-content-container,
 .join-content-container,
-.salon-create-content-container {
+.salon-create-content-container,
+.user-account-content-container {
   min-height: calc(100vh - 3rem);
   display: flex;
   flex-direction: column;
@@ -207,7 +212,8 @@ form select {
 }
 
 .join-content-container .form-card,
-.login-content-container .form-card {
+.login-content-container .form-card,
+.user-account-content-container .form-card {
   padding: 50px;
   border: 1px solid rgb(201, 201, 201);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
@@ -439,7 +445,7 @@ form select {
 }
 
 .button-danger:hover {
-  background-color: rgb(199, 0, 0);
+  background-color: rgb(236, 0, 0);
 }
 
 .border-radius-4px {
