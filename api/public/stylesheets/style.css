@@ -38,7 +38,8 @@ nav {
   top: 0;
   width: 100%;
   background-color: white;
-  z-index: 1;
+  z-index: 2;
+  overflow: hidden;
 }
 
 nav ul {
@@ -48,11 +49,7 @@ nav ul {
 }
 
 nav ul:first-child {
-  margin-left: 30px;
-}
-
-nav ul:nth-child(2) {
-  margin-right: 30px;
+  margin-left: 15px;
 }
 
 nav a:hover {
@@ -61,6 +58,15 @@ nav a:hover {
 
 nav a.header_join-button:hover {
   color: white;
+}
+
+nav button.icon {
+  display: none;
+}
+
+nav button.icon i {
+  font-size: xx-large;
+  color: rgb(1, 102, 255);
 }
 
 main {
@@ -116,6 +122,7 @@ form select {
   width: 900px;
   height: 400px;
   border: 2px solid rgb(82, 140, 228);
+  z-index: 1;
 }
 
 .alert {
@@ -477,7 +484,84 @@ form select {
   margin-right: 10px;
 }
 
+/* NAV OVERLAY START */
+
+#nav_overlay.show {
+  height: calc(30% - 3em);
+}
+
+#nav_overlay.hide {
+  height: 0%;
+}
+
+#nav_overlay {
+  border-top: 0.5px solid rgb(201, 201, 201);
+  border-bottom: 0.5px solid rgb(201, 201, 201);
+  height: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 3em;
+  background-color: white;
+  overflow-y: hidden;
+  transition: 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#nav_overlay .overlay-content {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#nav_overlay .overlay-content ul {
+  width: 100%;
+}
+
+#nav_overlay .overlay-content ul li:not(:last-child) {
+  border-bottom: 0.5px solid rgb(201, 201, 201);
+}
+
+#nav_overlay .overlay-content a {
+  padding: 8px;
+  font-size: 30px;
+  color: rgb(1, 102, 255);
+  display: block;
+  transition: 0.3s;
+}
+
+#nav_overlay .overlay-content a:hover,
+#nav_overlay .overlay-content a:focus {
+  color: rgb(4, 85, 206);
+}
+
+@media screen and (max-height: 450px) {
+  #nav_overlay .overlay-content a {
+    font-size: 20px;
+  }
+
+  #nav_overlay button.overlay-close {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+/* NAV OVERLAY END */
+
 @media (max-width: 950px) {
+  #map {
+    width: 95%;
+  }
+
   .home-content-container {
     width: 90%;
     text-align: center;
@@ -487,9 +571,6 @@ form select {
     flex-direction: column;
   }
 
-  #map {
-    width: 95%;
-  }
   .alert {
     max-width: 100%;
   }
@@ -499,6 +580,20 @@ form select {
 }
 
 @media (max-width: 650px) {
+  nav li:not(:last-child) {
+    display: none;
+  }
+
+  nav li button.icon {
+    display: block;
+  }
+}
+
+@media (max-width: 650px) {
+  nav ul:nth-child(2) {
+    margin-right: 15px;
+  }
+
   .home-content-container a {
     display: none;
   }
