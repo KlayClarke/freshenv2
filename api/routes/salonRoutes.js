@@ -3,12 +3,14 @@ const router = express.Router();
 const salon_controller = require("../controllers/salonController");
 const verifyToken = require("../middleware/verifyToken");
 
-router.get("/", salon_controller.salon_list);
+router
+  .route("/")
+  .get(salon_controller.salon_list)
+  .post(salon_controller.salon_create);
 
-router.get("/:salonid", salon_controller.salon_detail);
-
-router.post("/", verifyToken, salon_controller.salon_create);
-
-router.delete("/:salonid", verifyToken, salon_controller.salon_delete);
+router
+  .route("/:salonid")
+  .get(salon_controller.salon_detail)
+  .post(salon_controller.salon_update);
 
 module.exports = router;
