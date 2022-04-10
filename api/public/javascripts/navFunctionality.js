@@ -9,3 +9,15 @@ function toggleNav() {
     document.querySelector("#nav_overlay").classList.add("show");
   }
 }
+
+document.addEventListener("click", function (event) {
+  if (document.querySelector("#nav_overlay").classList.contains("show")) {
+    if (
+      event.target !== document.querySelector("nav") &&
+      event.target !== document.querySelector("#nav_overlay") &&
+      event.target !== document.querySelector("#nav_toggle i")
+    ) {
+      toggleNav();
+    }
+  }
+});

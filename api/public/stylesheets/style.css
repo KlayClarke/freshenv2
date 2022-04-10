@@ -487,7 +487,7 @@ form select {
 /* NAV OVERLAY START */
 
 #nav_overlay.show {
-  height: calc(30% - 3em);
+  height: calc(25% - 3em);
 }
 
 #nav_overlay.hide {
@@ -496,7 +496,6 @@ form select {
 
 #nav_overlay {
   border-top: 0.5px solid rgb(201, 201, 201);
-  border-bottom: 0.5px solid rgb(201, 201, 201);
   height: 0;
   width: 100%;
   position: fixed;
@@ -506,10 +505,6 @@ form select {
   background-color: white;
   overflow-y: hidden;
   transition: 0.5s;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 #nav_overlay .overlay-content {
@@ -526,7 +521,7 @@ form select {
   width: 100%;
 }
 
-#nav_overlay .overlay-content ul li:not(:last-child) {
+#nav_overlay .overlay-content ul li {
   border-bottom: 0.5px solid rgb(201, 201, 201);
 }
 
