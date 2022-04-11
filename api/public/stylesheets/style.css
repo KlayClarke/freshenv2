@@ -487,7 +487,7 @@ form select {
 /* NAV OVERLAY START */
 
 #nav_overlay.show {
-  height: calc(25% - 3em);
+  height: calc(262px - 3rem);
 }
 
 #nav_overlay.hide {
@@ -504,6 +504,7 @@ form select {
   top: 3em;
   background-color: white;
   overflow-y: hidden;
+  overflow-x: hidden;
   transition: 0.5s;
 }
 
