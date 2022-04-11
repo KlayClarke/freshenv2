@@ -126,10 +126,12 @@ form select {
 }
 
 .alert {
-  position: absolute;
+  z-index: 2;
+  position: fixed;
   margin: 0 auto;
   left: 0;
   right: 0;
+  bottom: 0;
   padding: 15px;
   display: flex;
   align-items: center;
@@ -173,7 +175,7 @@ form select {
 }
 
 .home-content-container {
-  padding: 60px 0;
+  padding: 10px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -505,7 +507,7 @@ form select {
   background-color: white;
   overflow-y: hidden;
   overflow-x: hidden;
-  transition: 0.5s;
+  transition: 0.1s;
 }
 
 #nav_overlay .overlay-content {
