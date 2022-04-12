@@ -630,3 +630,13 @@ form select {
     padding: 0;
   }
 }
+
+@media (max-width: 450px) {
+  .salon-average-price-container {
+    display: none;
+  }
+  .salon-name-container,
+  .salon-address-container {
+    padding: 5px;
+  }
+}

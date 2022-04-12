@@ -5,7 +5,7 @@ const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 
 // return all salons
-exports.salon_explore_get = function (req, res) {
+exports.salon_explore_get = (req, res) => {
   async.parallel(
     {
       salons: function (callback) {
@@ -23,7 +23,7 @@ exports.salon_explore_get = function (req, res) {
 };
 
 // return specific salon
-exports.salon_detail_get = function (req, res, next) {
+exports.salon_detail_get = (req, res, next) => {
   async.parallel(
     {
       salon: function (callback) {
@@ -38,6 +38,11 @@ exports.salon_detail_get = function (req, res, next) {
       return res.json(results.salon);
     }
   );
+};
+
+// get salon creation form
+exports.salon_create_get = (req, res, next) => {
+  res.render("salon_form");
 };
 
 // create salon
@@ -86,10 +91,10 @@ exports.salon_create_post = [
 ];
 
 // update salon
-exports.salon_update_post = function (req, res) {};
+exports.salon_update_post = (req, res) => {};
 
 // delete salon
-exports.salon_delete_post = function (req, res, next) {
+exports.salon_delete_post = (req, res, next) => {
   async.parallel(
     {
       salon: function (callback) {
