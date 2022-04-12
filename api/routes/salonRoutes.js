@@ -5,12 +5,12 @@ const verifyToken = require("../middleware/verifyToken");
 
 router
   .route("/")
-  .get(salon_controller.salon_list)
-  .post(salon_controller.salon_create);
+  .get(salon_controller.salon_explore_get)
+  .post(salon_controller.salon_create_post);
 
 router
   .route("/:salonid")
-  .get(salon_controller.salon_detail)
-  .post(salon_controller.salon_update);
+  .get(salon_controller.salon_detail_get)
+  .post(salon_controller.salon_update_post);
 
 module.exports = router;

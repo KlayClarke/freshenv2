@@ -5,15 +5,25 @@ const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 
 // return all salons
-exports.salon_list = function (req, res) {
-  Salon.find().exec(function (err, list_salons) {
-    if (err) return next(err);
-    return res.json(list_salons);
-  });
+exports.salon_explore_get = function (req, res) {
+  async.parallel(
+    {
+      salons: function (callback) {
+        Salon.find({}).exec(callback);
+      },
+    },
+    (err, results) => {
+      if (err) {
+        req.flash("error", err.message);
+        res.redirect("/");
+      }
+      res.render("salon_explore", { salons: results.salons });
+    }
+  );
 };
 
 // return specific salon
-exports.salon_detail = function (req, res, next) {
+exports.salon_detail_get = function (req, res, next) {
   async.parallel(
     {
       salon: function (callback) {
@@ -31,7 +41,7 @@ exports.salon_detail = function (req, res, next) {
 };
 
 // create salon
-exports.salon_create = [
+exports.salon_create_post = [
   body("name").trim().escape(),
   body("type").trim().escape(),
   body("average_price").trim().escape(),
@@ -76,10 +86,10 @@ exports.salon_create = [
 ];
 
 // update salon
-exports.salon_update = function (req, res) {};
+exports.salon_update_post = function (req, res) {};
 
 // delete salon
-exports.salon_delete = function (req, res, next) {
+exports.salon_delete_post = function (req, res, next) {
   async.parallel(
     {
       salon: function (callback) {

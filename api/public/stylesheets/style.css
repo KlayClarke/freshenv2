@@ -158,12 +158,14 @@ form select {
 }
 
 .not-found-content-container {
+  padding: 0 20px;
   gap: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - 3rem);
+  text-align: center;
 }
 
 .home-content-wrapper {
@@ -619,5 +621,12 @@ form select {
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 600px) {
+  .join-content-container .form-card,
+  .login-content-container .form-card,
+  .user-account-content-container .form-card {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
 }
