@@ -5,7 +5,7 @@ block content
       ul.salon-cards-container 
         if currentUser 
           .salon-create-button-container 
-            a(href="#" class='button button-l salon-create-button border-radius-4px') Add Salon 
+            a(href="/explore/create" class='button button-l salon-create-button border-radius-4px') Add Salon 
         .salon-card-key 
           .salon-name-container 
             p.bold Name 
@@ -18,8 +18,8 @@ block content
         if salons && salons.length
           each salon in salons 
             div
-              li.salon-card 
-                a(href={`/explore/${salon._id}`})
+              a(href=`/explore/${salon._id}`) 
+                li.salon-card 
                   .salon-name-container 
                     p= salon.name 
                   .salon-type-container 
