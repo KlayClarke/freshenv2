@@ -1,0 +1,32 @@
+extends layout
+block content
+  .explore-page-wrapper 
+    .explore-page-container 
+      ul.salon-cards-container 
+        if currentUser 
+          .salon-create-button-container 
+            a(href="#" class='button button-l salon-create-button border-radius-4px') Add Salon 
+        .salon-card-key 
+          .salon-name-container 
+            p.bold Name 
+          .salon-type-container 
+            p.bold Type 
+          .salon-average-price-container
+            p.bold Average Price 
+          .salon-address-container 
+            p.bold Address 
+        if salons && salons.length
+          each salon in salons 
+            div
+              li.salon-card 
+                a(href={`/explore/${salon._id}`})
+                  .salon-name-container 
+                    p= salon.name 
+                  .salon-type-container 
+                    p= salon.type 
+                  .salon-average-price-container 
+                    p= salon.average_price 
+                  .salon-address-container 
+                    p #{salon.street_address} #{salon.city}, #{salon.state}  #{salon.zip_code}
+                    
+
