@@ -509,7 +509,6 @@ form select {
   background-color: white;
   overflow-y: hidden;
   overflow-x: hidden;
-  transition: 0.1s;
 }
 
 #nav_overlay .overlay-content {
@@ -556,6 +555,30 @@ form select {
 }
 
 /* NAV OVERLAY END */
+
+/* SCREEN OVERLAY BELOW NAV START */
+
+#screen_overlay.show {
+  height: calc(100% - 262px);
+  display: block;
+}
+
+#screen_overlay.hide {
+  height: 0%;
+  display: none;
+}
+
+#screen_overlay {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* SCREEN OVERLAY BELOW NAV END */
 
 @media (max-width: 950px) {
   #map {
