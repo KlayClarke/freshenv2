@@ -110,6 +110,7 @@ form select:focus {
 form select {
   width: 266px;
   height: 32.5px;
+  background-color: white;
 }
 
 #header_logo {
@@ -662,5 +663,19 @@ form select {
   .salon-name-container,
   .salon-address-container {
     padding: 5px;
+  }
+
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"],
+  form input[type="number"],
+  form input[type="file"],
+  form select {
+    width: 200px;
+  }
+
+  form select,
+  form .auth-form-submit.button {
+    width: 216px;
   }
 }
