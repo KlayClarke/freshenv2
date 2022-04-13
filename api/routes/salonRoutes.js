@@ -1,15 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const salon_controller = require("../controllers/salonController");
-const verifyToken = require("../middleware/verifyToken");
+const { verifyToken } = require("../middleware/verifyToken");
+const { logUrl } = require("../middleware/logUrl");
 
-router.get("/", salon_controller.salon_explore_get);
+router.get("/", logUrl, salon_controller.salon_explore_get);
 
-router.get("/create", salon_controller.salon_create_get);
+router.get("/create", logUrl, salon_controller.salon_create_get);
 
 router
   .route("/:salonid")
-  .get(salon_controller.salon_detail_get)
+  .get(logUrl, salon_controller.salon_detail_get)
   .post(salon_controller.salon_update_post);
 
 module.exports = router;
