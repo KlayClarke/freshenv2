@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const salon_controller = require("../controllers/salonController");
 const { verifyToken } = require("../middleware/verifyToken");
-const { logUrl } = require("../middleware/logUrl");
 
 router.get("/", logUrl, salon_controller.salon_explore_get);
 
