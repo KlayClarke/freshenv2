@@ -314,7 +314,6 @@ form select {
   align-items: center;
   justify-content: center;
   text-align: center;
-  border-right: 1px solid rgb(240, 240, 240);
   padding: 20px;
 }
 
@@ -644,15 +643,11 @@ form select {
     width: 100%;
     padding: 0px;
   }
-}
 
-@media (max-width: 600px) {
   .join-content-container .form-card,
   .login-content-container .form-card,
   .user-account-content-container .form-card {
-    border: none;
-    box-shadow: none;
-    padding: 0;
+    padding: 20px;
   }
 }
 
