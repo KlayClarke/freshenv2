@@ -35,7 +35,7 @@ exports.salon_detail_get = (req, res, next) => {
     },
     function (err, results) {
       if (err) return next(err);
-      return res.json(results.salon);
+      return res.render("salon_detail", { salon: results.salon });
     }
   );
 };
