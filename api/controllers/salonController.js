@@ -77,15 +77,16 @@ exports.salon_create_post = [
       state: req.body.state,
       zip_code: req.body.zip_code,
       geometry: salonGeometry,
-      author: req.body.author,
-      reviews: req.body.reviews,
+      author: req.user._id,
+      reviews: [],
     });
-    jwt.verify(req.token, "secretkey", (err, authData) => {
-      if (err) return res.sendStatus(403);
-      salon.save(function (err) {
-        if (err) return next(err);
-        return res.send("Salon created succesfully");
-      });
+    salon.save(function (err) {
+      if (err) {
+        req.flash("error", "There has been a problem");
+        return res.redirect("/explore/create");
+      }
+      console.log("salon successfully created");
+      return res.redirect(`/explore/${salon._id}`);
     });
   },
 ];
