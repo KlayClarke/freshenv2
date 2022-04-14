@@ -1,6 +1,6 @@
 // middleware to verify jwt token on request
 
-function verifyToken(req, res, next) {
+module.exports.verifyToken = (req, res, next) => {
   const bearerHeader = req.headers["authorization"];
   // check if header is undefined
   if (typeof bearerHeader !== "undefined") {
@@ -15,6 +15,4 @@ function verifyToken(req, res, next) {
   } else {
     res.sendStatus(403);
   }
-}
-
-module.exports = verifyToken;
+};
