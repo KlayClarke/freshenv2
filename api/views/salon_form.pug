@@ -2,16 +2,16 @@ extends layout
 block content 
   .salon-create-content-wrapper 
     .salon-create-content-container 
-      form(action="#" method='')
+      form(action="/explore" method='POST')
         .form-section 
           label(for="name") Name 
           br
-          input(type="text" id='name')
+          input(type="text" id='name' name='name')
           br
         .form-section 
           label(for="type") Type 
           br
-          select#type(name="type")
+          select(name="type" id='type')
             option(value="" disabled) 
             option(value="Hybrid") Hybrid 
             option(value="Barbershop") Barbershop 
@@ -20,31 +20,31 @@ block content
         .form-section 
           label(for="average_price") Average Price 
           br
-          input(type="number" id='average_price' min=0)
+          input(type="number" id='average_price' name='average_price' min=0)
           br
         .form-section 
           label(for="image") Image URL 
           br
-          input(type="text" id='image')
+          input(type="text" id='image' name='image')
           br
         .form-section 
           label(for="street_address") Street Address 
           br
-          input(type="text" id='street_address')
+          input(type="text" id='street_address' name='street_address')
           br
         .form-section
           label(for="city") City 
           br
-          input(type="text" id='city') 
+          input(type="text" id='city' name='city') 
           br
         .form-section 
           label(for="state") State 
           br
-          input(type="text" id='state')
+          input(type="text" id='state' name='state')
           br
         .form-section 
           label(for="zip_code") Zip Code 
           br
-          input(type="text" id='zip_code')
+          input(type="text" id='zip_code' name='zip_code')
           br
         button(class='button button-s button-success border-radius-4px') Create Salon  
