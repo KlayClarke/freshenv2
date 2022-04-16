@@ -2,49 +2,51 @@ extends layout
 block content 
   .salon-create-content-wrapper 
     .salon-create-content-container 
-      form(action="/explore" method='POST')
+      form(action=(task == 'create' ? "/explore" : `/explore/${salon._id}/update`) method='POST')
         .form-section 
           label(for="name") Name 
           br
-          input(type="text" id='name' name='name')
+          input(type="text" id='name' name='name' value=(!salon ? '' : salon.name))
           br
         .form-section 
           label(for="type") Type 
           br
           select(name="type" id='type')
-            option(value="" disabled) 
-            option(value="Hybrid") Hybrid 
-            option(value="Barbershop") Barbershop 
-            option(value="Salon") Salon 
+            option(value="Hybrid" selected=(!salon ? false : (salon.type=='Hybrid' || salon.type=='hybrid') ? 'selected' : false)) Hybrid 
+            option(value="Barbershop" selected=(!salon ? false : (salon.type=='Barbershop' || salon.type=='barbershop') ? 'selected' : false)) Barbershop 
+            option(value="Salon" selected=(!salon ? false : (salon.type=='Salon' || salon.type=='salon') ? 'selected' : false)) Salon 
           br
         .form-section 
           label(for="average_price") Average Price 
           br
-          input(type="number" id='average_price' name='average_price' min=0)
+          input(type="number" id='average_price' name='average_price' min=0 value=(!salon ? '' : salon.average_price))
           br
         .form-section 
           label(for="image") Image URL 
           br
-          input(type="text" id='image' name='image')
+          input(type="text" id='image' name='image' value=(!salon ? '' : salon.image))
           br
         .form-section 
           label(for="street_address") Street Address 
           br
-          input(type="text" id='street_address' name='street_address')
+          input(type="text" id='street_address' name='street_address' value=(!salon ? '' : salon.street_address))
           br
         .form-section
           label(for="city") City 
           br
-          input(type="text" id='city' name='city') 
+          input(type="text" id='city' name='city' value=(!salon ? '' : salon.city)) 
           br
         .form-section 
           label(for="state") State 
           br
-          input(type="text" id='state' name='state')
+          input(type="text" id='state' name='state' value=(!salon ? '' : salon.state))
           br
         .form-section 
           label(for="zip_code") Zip Code 
           br
-          input(type="text" id='zip_code' name='zip_code')
+          input(type="text" id='zip_code' name='zip_code' value=(!salon ? '' : salon.zip_code))
           br
-        button(class='button button-s button-success border-radius-4px') Create Salon  
+        if task == 'create'
+          button(class='button button-s button-success border-radius-4px') Create
+        if task == 'update'
+          button(class='button button-s button-success border-radius-4px') Update
