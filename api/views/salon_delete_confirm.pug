@@ -2,8 +2,6 @@ extends layout
 block content 
   .misc-content-container
     .form-card.border-radius-8px  
-      p Click 
-        a.blue(href=`/explore/${salon._id}`) here 
-        | if you've changed your mind. Otherwise, click the button below to confirm the deletion of #{salon.name}.
+      p Click the button below to confirm the deletion of #{salon.name}.
       form(action=`/explore/${salon._id}/delete` method='POST')
         button.button.button-l.button-danger.border-radius-6px Delete
