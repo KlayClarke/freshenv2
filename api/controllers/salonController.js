@@ -220,7 +220,7 @@ exports.salon_delete_post = (req, res, next) => {
           res.redirect("back");
         }
         req.flash("success", "Deletion successful");
-        return res.redirect("/explore");
+        return res.redirect("/explore/sort/name");
       });
     }
   );
