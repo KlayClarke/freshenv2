@@ -374,7 +374,7 @@ form select {
 }
 
 .salon-detail-container .salon-buttons-container a {
-  margin-right: 30px;
+  margin-right: 15px;
 }
 
 .button:hover {
@@ -605,7 +605,7 @@ form select {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 /* SCREEN OVERLAY BELOW NAV END */
