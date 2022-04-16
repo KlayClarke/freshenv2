@@ -17,6 +17,11 @@ exports.salon_explore_get = (req, res) => {
         req.flash("error", err.message);
         res.redirect("/");
       }
+      results.salons.sort(function (a, b) {
+        let nameA = a.name.toUpperCase();
+        let nameB = b.name.toUpperCase();
+        return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+      });
       res.render("salon_explore", { salons: results.salons });
     }
   );
