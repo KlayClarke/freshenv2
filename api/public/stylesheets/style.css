@@ -296,6 +296,10 @@ form select {
   padding: 20px;
 }
 
+.salon-cards-container form {
+  padding: 10px;
+}
+
 .salon-card-key,
 .salon-card {
   display: flex;
@@ -652,6 +656,10 @@ form select {
     font-size: small;
   }
 
+  .salon-cards-container form select {
+    width: 100px;
+  }
+
   .salon-type-container {
     display: none;
   }
@@ -675,7 +683,8 @@ form select {
 
   .join-content-container .form-card,
   .login-content-container .form-card,
-  .user-account-content-container .form-card {
+  .user-account-content-container .form-card,
+  .misc-content-container .form-card {
     padding: 20px;
   }
 }
