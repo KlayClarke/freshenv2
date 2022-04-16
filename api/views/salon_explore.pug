@@ -6,6 +6,12 @@ block content
         if currentUser 
           .salon-create-button-container 
             a(href="/explore/create" class='button button-l salon-create-button border-radius-4px') Add Salon 
+        form(action="")
+          label(for="explore_sort") Sort By  
+          select#explore_sort(name="explore_sort")
+            option(value="name") Name 
+            option(value="type") Type 
+            option(value="average_price") Average Price
         .salon-card-key 
           .salon-name-container 
             p.bold Name 
