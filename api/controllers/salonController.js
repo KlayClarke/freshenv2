@@ -17,19 +17,19 @@ exports.salon_explore_get = (req, res) => {
         req.flash("error", err.message);
         res.redirect("/");
       }
-      if (req.params.sortby == "sort_by_name") {
+      if (req.params.sortby == "name") {
         results.salons.sort(function (a, b) {
           let nameA = a.name.toUpperCase();
           let nameB = b.name.toUpperCase();
           return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
         });
-      } else if (req.params.sortby == "sort_by_type") {
+      } else if (req.params.sortby == "type") {
         results.salons.sort(function (a, b) {
           let typeA = a.type.toUpperCase();
           let typeB = b.type.toUpperCase();
           return typeA < typeB ? -1 : typeA > typeB ? 1 : 0;
         });
-      } else if (req.params.sortby == "sort_by_average_price") {
+      } else if (req.params.sortby == "average_price") {
         results.salons.sort(function (a, b) {
           let averagePriceA = parseInt(a.average_price);
           let averagePriceB = parseInt(b.average_price);
