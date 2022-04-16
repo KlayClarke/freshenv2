@@ -35,14 +35,18 @@ exports.salon_detail_get = (req, res, next) => {
     },
     function (err, results) {
       if (err) return next(err);
-      return res.render("salon_detail", { salon: results.salon });
+      return res.render("salon_detail", {
+        salon: results.salon,
+      });
     }
   );
 };
 
 // get salon creation form
 exports.salon_create_get = (req, res, next) => {
-  res.render("salon_form");
+  res.render("salon_form", {
+    task: "create",
+  });
 };
 
 // create salon
@@ -82,17 +86,79 @@ exports.salon_create_post = [
     });
     salon.save(function (err) {
       if (err) {
-        req.flash("error", "There has been a problem");
+        req.flash("error", "Something went wrong");
         return res.redirect("/explore/create");
       }
-      console.log("salon successfully created");
+      req.flash("success", "Creation successful");
       return res.redirect(`/explore/${salon._id}`);
     });
   },
 ];
 
-// update salon
-exports.salon_update_post = (req, res) => {};
+// get salon update form
+exports.salon_update_get = (req, res) => {
+  async.parallel(
+    {
+      salon: function (callback) {
+        Salon.findById(req.params.salonid).exec(callback);
+      },
+    },
+    function (err, results) {
+      if (err) {
+        req.flash("error", "Something went wrong");
+        res.redirect("back");
+      }
+      res.render("salon_form", { salon: results.salon, task: "update" });
+    }
+  );
+};
+
+// handle salon update
+exports.salon_update_post = [
+  body("name").trim().escape(),
+  body("type").trim().escape(),
+  body("average_price").trim().escape(),
+  body("image").trim(),
+  body("street_address").trim().escape(),
+  body("city").trim().escape(),
+  body("state").trim().escape(),
+  body("zip_code").trim().escape(),
+  body("geometry").escape(),
+  body("author").trim().escape(),
+  body("reviews"),
+  async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) return res.send(errors.array());
+    let salonGeometry = await findLocation(
+      req.body.street_address,
+      req.body.city,
+      req.body.state,
+      req.body.zip_code
+    );
+    let salon = new Salon({
+      _id: req.params.salonid,
+      name: req.body.name,
+      type: req.body.type,
+      average_price: req.body.average_price,
+      image: req.body.image,
+      street_address: req.body.street_address,
+      city: req.body.city,
+      state: req.body.state,
+      zip_code: req.body.zip_code,
+      geometry: salonGeometry,
+      author: req.user._id,
+      reviews: [],
+    });
+    Salon.findByIdAndUpdate(salon._id, salon, {}, function (err, thesalon) {
+      if (err) {
+        req.flash("error", "Something went wrong");
+        res.redirect("back");
+      }
+      req.flash("success", "Update successful");
+      res.redirect(`/explore/${salon._id}`);
+    });
+  },
+];
 
 // get salon delete confirm page
 exports.salon_delete_get = (req, res, next) => {
@@ -104,7 +170,7 @@ exports.salon_delete_get = (req, res, next) => {
     },
     function (err, results) {
       if (err) {
-        req.flash("error", "There has been an error");
+        req.flash("error", "Something went wrong");
         res.redirect("back");
       }
       res.render("salon_delete_confirm", { salon: results.salon });
@@ -124,9 +190,10 @@ exports.salon_delete_post = (req, res, next) => {
       if (err) return next(err);
       Salon.findByIdAndDelete(results.salon._id, function () {
         if (err) {
-          req.flash("error", "There has been an error");
+          req.flash("error", "Something went wrong");
           res.redirect("back");
         }
+        req.flash("success", "Deletion successful");
         return res.redirect("/explore");
       });
     }
