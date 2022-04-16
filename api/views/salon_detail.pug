@@ -12,7 +12,7 @@ block content
           h1= salon.name 
           h2 #{salon.street_address} #{salon.city}, #{salon.state} #{salon.zip_code}
       .salon-buttons-container
-        a.button.button-l.button-warning.border-radius-6px(href="") Edit 
+        a.button.button-l.button-warning.border-radius-6px(href=`/explore/${salon._id}/update`) Edit   
         a.button.button-l.button-danger.border-radius-6px(href=`/explore/${salon._id}/delete`) Delete 
       div(class='bottom-section border-radius-10px')
         #map 
@@ -34,7 +34,7 @@ block content
     const marker1 = new mapboxgl.Marker()
       .setLngLat(salonCoordinates)
       .setPopup(
-        new mapboxgl.Popup({ offset: 25 }).setHTML(`<h5>${salonName}</h5>`)
+        new mapboxgl.Popup({ offset: 25 }).setHTML(`<h2>${salonName}</h2>`)
       )
       .addTo(map);
 
