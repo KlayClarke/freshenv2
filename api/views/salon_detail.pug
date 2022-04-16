@@ -11,6 +11,9 @@ block content
         .right 
           h1= salon.name 
           h2 #{salon.street_address} #{salon.city}, #{salon.state} #{salon.zip_code}
+      .salon-buttons-container
+        a.button.button-l.button-warning.border-radius-6px(href="") Edit 
+        a.button.button-l.button-danger.border-radius-6px(href=`/explore/${salon._id}/delete`) Delete 
       div(class='bottom-section border-radius-10px')
         #map 
   script.
@@ -20,7 +23,7 @@ block content
    const map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",
-      zoom: 16,
+      zoom: 17,
       center: salonCoordinates,
       pitch: 60,
       antialias: true, // create the gl context with MSAA antialiasing, so custom layers are antialiased

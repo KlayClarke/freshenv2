@@ -223,7 +223,8 @@ form select {
 .login-content-container,
 .join-content-container,
 .salon-create-content-container,
-.user-account-content-container {
+.user-account-content-container,
+.misc-content-container {
   min-height: calc(100vh - 3rem);
   display: flex;
   flex-direction: column;
@@ -233,7 +234,8 @@ form select {
 
 .join-content-container .form-card,
 .login-content-container .form-card,
-.user-account-content-container .form-card {
+.user-account-content-container .form-card,
+.misc-content-container .form-card {
   padding: 50px;
   border: 1px solid rgb(201, 201, 201);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
@@ -245,7 +247,8 @@ form select {
 
 .login-content-container form,
 .join-content-container form,
-.salon-create-content-container form {
+.salon-create-content-container form,
+.misc-content-container form {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -256,6 +259,11 @@ form select {
 .login-content-container p,
 .join-content-container p {
   margin-top: 10px;
+}
+
+.misc-content-container {
+  text-align: center;
+  line-height: 1.5;
 }
 
 .divider {
@@ -365,6 +373,10 @@ form select {
   justify-content: center;
 }
 
+.salon-detail-container .salon-buttons-container a {
+  margin-right: 30px;
+}
+
 .button:hover {
   cursor: pointer;
 }
@@ -456,6 +468,16 @@ form select {
 
 .button-success:hover {
   background-color: rgb(0, 114, 0);
+}
+
+.button-warning {
+  background-color: orange;
+  border: 1px solid orange;
+  color: white;
+}
+
+.button-warning:hover {
+  background-color: rgb(229, 150, 4);
 }
 
 .button-danger {
@@ -649,7 +671,6 @@ form select {
   .salon-detail-container .top-section .right {
     margin: 0;
     width: 100%;
-    padding: 0px;
   }
 
   .join-content-container .form-card,

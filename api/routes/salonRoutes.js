@@ -15,4 +15,9 @@ router
   .get(salon_controller.salon_detail_get)
   .post(salon_controller.salon_update_post);
 
+router
+  .route("/:salonid/delete")
+  .get(salon_controller.salon_delete_get)
+  .post(salon_controller.salon_delete_post);
+
 module.exports = router;

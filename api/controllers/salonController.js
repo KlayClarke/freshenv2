@@ -94,7 +94,25 @@ exports.salon_create_post = [
 // update salon
 exports.salon_update_post = (req, res) => {};
 
-// delete salon
+// get salon delete confirm page
+exports.salon_delete_get = (req, res, next) => {
+  async.parallel(
+    {
+      salon: function (callback) {
+        Salon.findById(req.params.salonid).exec(callback);
+      },
+    },
+    function (err, results) {
+      if (err) {
+        req.flash("error", "There has been an error");
+        res.redirect("back");
+      }
+      res.render("salon_delete_confirm", { salon: results.salon });
+    }
+  );
+};
+
+// handle salon delete
 exports.salon_delete_post = (req, res, next) => {
   async.parallel(
     {
@@ -104,12 +122,12 @@ exports.salon_delete_post = (req, res, next) => {
     },
     function (err, results) {
       if (err) return next(err);
-      jwt.verify(req.token, "secretkey", (err, authData) => {
-        if (err) return res.sendStatus(403);
-        Salon.findByIdAndDelete(req.params.salonid, function () {
-          if (err) return next(err);
-          return res.send("Salon successfully deleted");
-        });
+      Salon.findByIdAndDelete(results.salon._id, function () {
+        if (err) {
+          req.flash("error", "There has been an error");
+          res.redirect("back");
+        }
+        return res.redirect("/explore");
       });
     }
   );
