@@ -15,8 +15,7 @@ block content
         if currentUser && currentUser._id.toString() == salon.author._id.toString()
           a.button.button-l.button-warning.border-radius-6px(href=`/explore/${salon._id}/update`) Edit   
           a.button.button-l.button-danger.border-radius-6px(href=`/explore/${salon._id}/delete`) Delete 
-      div(class='bottom-section border-radius-10px')
-        #map 
+      div#map(class='bottom-section border-radius-10px')
   script.
     var salonName = "!{salon.name}"
     var salonCoordinates = [!{salon.geometry.coordinates}]
