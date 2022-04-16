@@ -17,12 +17,33 @@ exports.salon_explore_get = (req, res) => {
         req.flash("error", err.message);
         res.redirect("/");
       }
-      results.salons.sort(function (a, b) {
-        let nameA = a.name.toUpperCase();
-        let nameB = b.name.toUpperCase();
-        return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+      if (req.params.sortby == "sort_by_name") {
+        results.salons.sort(function (a, b) {
+          let nameA = a.name.toUpperCase();
+          let nameB = b.name.toUpperCase();
+          return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+        });
+      } else if (req.params.sortby == "sort_by_type") {
+        results.salons.sort(function (a, b) {
+          let typeA = a.type.toUpperCase();
+          let typeB = b.type.toUpperCase();
+          return typeA < typeB ? -1 : typeA > typeB ? 1 : 0;
+        });
+      } else if (req.params.sortby == "sort_by_average_price") {
+        results.salons.sort(function (a, b) {
+          let averagePriceA = parseInt(a.average_price);
+          let averagePriceB = parseInt(b.average_price);
+          return averagePriceA < averagePriceB
+            ? -1
+            : averagePriceA > averagePriceB
+            ? 1
+            : 0;
+        });
+      }
+      res.render("salon_explore", {
+        salons: results.salons,
+        sort_by: req.params.sortby,
       });
-      res.render("salon_explore", { salons: results.salons });
     }
   );
 };
