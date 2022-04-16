@@ -16,6 +16,11 @@ router
   .post(salon_controller.salon_update_post);
 
 router
+  .route("/:salonid/update")
+  .get(salon_controller.salon_update_get)
+  .post(salon_controller.salon_update_post);
+
+router
   .route("/:salonid/delete")
   .get(salon_controller.salon_delete_get)
   .post(salon_controller.salon_delete_post);
