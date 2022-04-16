@@ -8,10 +8,10 @@ block content
             a(href="/explore/create" class='button button-l salon-create-button border-radius-4px') Add Salon 
         form(action="")
           label(for="explore_sort") Sort By  
-          select#explore_sort(name="explore_sort")
-            option(value="name") Name 
-            option(value="type") Type 
-            option(value="average_price") Average Price
+          select#explore_sort(name="explore_sort" onchange='location = this.value')
+            option(value="/explore/sort/name" selected=(sort_by=='name' ? 'selected' : false)) Name 
+            option(value="/explore/sort/type" selected=(sort_by=='type' ? 'selected' : false)) Type 
+            option(value="/explore/sort/average_price" selected=(sort_by=='average_price' ? 'selected' : false)) Average Price
         .salon-card-key 
           .salon-name-container 
             p.bold Name 
@@ -34,5 +34,3 @@ block content
                     p $#{salon.average_price}
                   .salon-address-container 
                     p #{salon.street_address} #{salon.city}, #{salon.state}  #{salon.zip_code}
-                    
-
