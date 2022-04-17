@@ -89,12 +89,14 @@ form input[type="email"],
 form input[type="password"],
 form input[type="number"],
 form input[type="file"],
+form textarea,
 form select {
   border: 1px solid lightgray;
   border-radius: 4px;
   padding: 7px;
   width: 250px;
   margin-top: 5px;
+  font-size: medium;
 }
 
 form input[type="text"]:focus,
@@ -102,6 +104,7 @@ form input[type="email"]:focus,
 form input[type="password"]:focus,
 form input[type="number"]:focus,
 form input[type="file"]:focus,
+form textarea:focus,
 form select:focus {
   border: 1px solid rgb(82, 140, 228);
   outline: 5px solid rgba(48, 114, 213, 0.147);
@@ -122,14 +125,16 @@ form select {
 .home-content-container #map {
   width: 900px;
   height: 400px;
-  border: 2px solid rgb(82, 140, 228);
+  border: 1px solid rgb(82, 140, 228);
+  outline: 5px solid rgba(48, 114, 213, 0.147);
   z-index: 1;
 }
 
 .salon-detail-container #map {
   width: 900px;
   height: 400px;
-  border: 2px solid rgb(82, 140, 228);
+  border: 1px solid rgb(82, 140, 228);
+  outline: 5px solid rgba(48, 114, 213, 0.147);
   z-index: 1;
 }
 
@@ -354,9 +359,10 @@ form select {
 }
 
 .salon-detail-container .top-section,
-.salon-detail-container .bottom-section {
+.salon-detail-container .bottom-section,
+.salon-detail-container .review-section {
   border: 1px solid lightgray;
-  min-height: 30%;
+  margin-bottom: 2rem;
 }
 
 .salon-detail-container .top-section .left {
@@ -381,6 +387,33 @@ form select {
   margin-right: 15px;
 }
 
+.salon-detail-container form .starability-basic {
+  margin-top: 15px;
+}
+
+.salon-detail-container form {
+  border-bottom: 1px solid lightgray;
+}
+
+.salon-detail-container form .form-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.salon-detail-container form textarea {
+  width: 60%;
+  min-height: 3rem;
+}
+
+.salon-detail-container .reviews-list {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 10rem;
+}
+
 .button:hover {
   cursor: pointer;
 }
@@ -395,6 +428,21 @@ form select {
 
 .button.button-l {
   padding: 10px 24px;
+}
+
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: white;
+}
+
+button:disabled:hover,
+button[disabled]:hover {
+  cursor: not-allowed;
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: white;
 }
 
 .header_join-button {
@@ -512,6 +560,15 @@ form select {
 
 .blue {
   color: rgb(1, 102, 255);
+}
+
+.blue-glow {
+  border: 1px solid rgb(82, 140, 228);
+  outline: 5px solid rgba(48, 114, 213, 0.147);
+}
+
+.lightgray {
+  color: lightgray;
 }
 
 .bold {
