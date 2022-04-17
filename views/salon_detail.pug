@@ -2,7 +2,7 @@ extends layout
 block content 
   .salon-detail-wrapper 
     .salon-detail-container
-      div(class='top-section border-radius-10px')
+      .top-section.border-radius-10px
         .left 
           if salon.image 
             img(src=`${salon.image}`, alt="salon" class='border-radius-8px')
@@ -11,11 +11,51 @@ block content
         .right 
           h1= salon.name 
           h2 #{salon.street_address} #{salon.city}, #{salon.state} #{salon.zip_code}
-      .salon-buttons-container
-        if currentUser && currentUser._id.toString() == salon.author._id.toString()
+      if currentUser && currentUser._id.toString() == salon.author._id.toString()
+        .salon-buttons-container
           a.button.button-l.button-warning.border-radius-6px(href=`/explore/detail/${salon._id}/update`) Edit   
           a.button.button-l.button-danger.border-radius-6px(href=`/explore/detail/${salon._id}/delete`) Delete 
-      div#map(class='bottom-section border-radius-10px')
+      #map.bottom-section.border-radius-10px
+      .review-section.border-radius-10px
+        form(action=`/explore/detail/${salon._id}/reviews` method='POST') 
+          .form-section  
+            fieldset.starability-basic
+              input(type="radio" id='first-rate1' name='review[rating]' value='1' required)
+              label(for="first-rate1" title='Terrible') 1 Star 
+              input(type="radio" id='first-rate2' name='review[rating]' value='2' required)
+              label(for="first-rate2" title='Not Good') 2 Star 
+              input(type="radio" id='first-rate3' name='review[rating]' value='3' required checked)
+              label(for="first-rate3" title='Average') 3 Star 
+              input(type="radio" id='first-rate4' name='review[rating]' value='4' required)
+              label(for="first-rate4" title='Good') 4 Star 
+              input(type="radio" id='first-rate5' name='review[rating]' value='5' required)
+              label(for="first-rate5" title='Amazing') 5 Star 
+          .form-section
+            if !currentUser  
+              textarea#body(name="review[body]" required disabled)
+            else 
+              textarea#body(name="review[body]" required)
+          .form-section
+            if !currentUser  
+              button.button.button-s.button-success.border-radius-4px(disabled) Submit 
+            else 
+              button.button.button-s.button-success.border-radius-4px Submit 
+        .reviews-list
+          if salon.reviews.length < 1
+            if currentUser 
+              h1.lightgray Be the first to leave a review 
+            else 
+              h1.lightgray You must join to leave a review
+          else 
+            each review in salon.reviews
+              .review-card
+                .review-card-body 
+                  h6.review-card-title #{review.author.username}
+                  p.starability-result(data-rating=`${review.rating}`) Rated: #{review.rating} stars 
+                  p= review.body 
+                  if currentUser && review.author._id.toString() == currentUser._id.toString()
+                    form(action=`/explore/detail/${salon._id}/reviews/${review._id}` method='DELETE') 
+                      button.button.button-s.button-danger Delete 
   script.
     var salonName = "!{salon.name}"
     var salonCoordinates = [!{salon.geometry.coordinates}]
