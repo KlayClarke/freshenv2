@@ -2,10 +2,10 @@ extends layout
 block content 
   .salon-detail-wrapper 
     .salon-detail-container
-      .top-section.border-radius-10px
+      .top-section.border-radius-6px
         .left 
           if salon.image 
-            img(src=`${salon.image}`, alt="salon" class='border-radius-8px')
+            img(src=`${salon.image}`, alt="salon" class='border-radius-6px blue-glow')
           else 
             img(src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png", alt="image not found" class='border-radius-8px')
         .right 
@@ -15,8 +15,8 @@ block content
         .salon-buttons-container
           a.button.button-l.button-warning.border-radius-6px(href=`/explore/detail/${salon._id}/update`) Edit   
           a.button.button-l.button-danger.border-radius-6px(href=`/explore/detail/${salon._id}/delete`) Delete 
-      #map.bottom-section.border-radius-10px
-      .review-section.border-radius-10px
+      #map.bottom-section.border-radius-6px
+      .review-section.border-radius-6px
         form(action=`/explore/detail/${salon._id}/reviews` method='POST') 
           .form-section  
             fieldset.starability-basic
@@ -45,7 +45,7 @@ block content
             if currentUser 
               h1.lightgray Be the first to leave a review 
             else 
-              h1.lightgray You must join to leave a review
+              h1.lightgray You must login to leave a review
           else 
             each review in salon.reviews
               .review-card
