@@ -81,13 +81,20 @@ exports.review_delete = function (req, res) {
       },
     },
     function (err, results) {
-      if (err) return next(err);
-      jwt.verify(req.token, "secretkey", (err, authData) => {
-        if (err) return res.sendStatus(403);
-        Review.findByIdAndDelete(req.params.reviewid, function () {
-          if (err) return next(err);
-          return res.send("Review successfully deleted.");
+      if (err) {
+        req.flash("error", "Something went wrong");
+        return res.redirect(`/explore/detail/${req.params.salonid}`);
+      }
+      Review.findByIdAndDelete(req.params.reviewid, async function () {
+        if (err) {
+          req.flash("error", "Something went wrong");
+          return res.redirect(`/explore/detail/${req.params.salonid}`);
+        }
+        await Salon.findByIdAndUpdate(req.params.salonid, {
+          $pull: { reviews: req.params.reviewid },
         });
+        req.flash("success", "Review successfully deleted");
+        return res.redirect(`/explore/detail/${req.params.salonid}`);
       });
     }
   );
