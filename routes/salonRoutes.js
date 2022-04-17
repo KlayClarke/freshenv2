@@ -23,6 +23,10 @@ router
 router.route("/detail/:salonid/reviews").post(review_controller.review_create);
 
 router
+  .route("/detail/:salonid/reviews/:reviewid")
+  .post(review_controller.review_delete);
+
+router
   .route("/detail/:salonid/update")
   .get(salon_controller.salon_update_get)
   .post(salon_controller.salon_update_post);
