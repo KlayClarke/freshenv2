@@ -13,8 +13,8 @@ block content
           h2 #{salon.street_address} #{salon.city}, #{salon.state} #{salon.zip_code}
       .salon-buttons-container
         if currentUser && currentUser._id.toString() == salon.author._id.toString()
-          a.button.button-l.button-warning.border-radius-6px(href=`/explore/${salon._id}/update`) Edit   
-          a.button.button-l.button-danger.border-radius-6px(href=`/explore/${salon._id}/delete`) Delete 
+          a.button.button-l.button-warning.border-radius-6px(href=`/explore/detail/${salon._id}/update`) Edit   
+          a.button.button-l.button-danger.border-radius-6px(href=`/explore/detail/${salon._id}/delete`) Delete 
       div#map(class='bottom-section border-radius-10px')
   script.
     var salonName = "!{salon.name}"

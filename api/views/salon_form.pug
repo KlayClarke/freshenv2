@@ -2,7 +2,7 @@ extends layout
 block content 
   .salon-create-content-wrapper 
     .salon-create-content-container 
-      form(action=(task == 'create' ? "/explore/create" : `/explore/${salon._id}/update`) method='POST')
+      form(action=(task == 'create' ? "/explore/create" : `/explore/detail/${salon._id}/update`) method='POST')
         .form-section 
           label(for="name") Name 
           br

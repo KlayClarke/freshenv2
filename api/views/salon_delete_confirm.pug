@@ -3,5 +3,5 @@ block content
   .misc-content-container
     .form-card.border-radius-8px  
       p Click the button below to confirm the deletion of #{salon.name}.
-      form(action=`/explore/${salon._id}/delete` method='POST')
+      form(action=`/explore/detail/${salon._id}/delete` method='POST')
         button.button.button-l.button-danger.border-radius-6px Delete
