@@ -325,6 +325,7 @@ form select {
 .salon-card:hover {
   cursor: pointer;
   border: 0.25px solid rgb(82, 140, 228);
+  outline: 5px solid rgba(48, 114, 213, 0.147);
   border-radius: 12px;
 }
 
