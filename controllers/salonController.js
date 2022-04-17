@@ -1,5 +1,5 @@
-const Salon = require("../models/salon");
 const async = require("async");
+const Salon = require("../models/salon");
 const { findLocation } = require("../public/javascripts/findLocation");
 const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
@@ -14,7 +14,7 @@ exports.salon_explore_get = (req, res) => {
     },
     (err, results) => {
       if (err) {
-        req.flash("error", err.message);
+        req.flash("error", "Something went wrong");
         res.redirect("/");
       }
       if (req.params.sortby == "sort_by_name") {
@@ -90,7 +90,10 @@ exports.salon_create_post = [
   body("reviews"),
   async (req, res, next) => {
     const errors = validationResult(req);
-    if (!errors.isEmpty()) return res.send(errors.array());
+    if (!errors.isEmpty()) {
+      req.flash("error", "Something went wrong");
+      res.redirect("/explore/create");
+    }
     let salonGeometry = await findLocation(
       req.body.street_address,
       req.body.city,
@@ -116,7 +119,7 @@ exports.salon_create_post = [
         return res.redirect("/explore/create");
       }
       req.flash("success", "Creation successful");
-      return res.redirect(`/explore/${salon._id}`);
+      return res.redirect(`/explore/detail/${salon._id}`);
     });
   },
 ];
@@ -181,7 +184,7 @@ exports.salon_update_post = [
         res.redirect("back");
       }
       req.flash("success", "Update successful");
-      res.redirect(`/explore/${salon._id}`);
+      res.redirect(`/explore/detail/${salon._id}`);
     });
   },
 ];

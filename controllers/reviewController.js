@@ -1,6 +1,6 @@
-const Salon = require("../models/salon");
-const Review = require("../models/review");
 const async = require("async");
+const Review = require("../models/review");
+const Salon = require("../models/salon");
 const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 
