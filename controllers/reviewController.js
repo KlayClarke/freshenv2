@@ -32,21 +32,40 @@ exports.review_create = [
   body("body").trim().isLength({ min: 1 }).escape(),
   body("rating").trim().escape(),
   body("author").trim().escape(),
-  (req, res, next) => {
-    const errors = validationResult(req);
-    let review = new Review({
-      body: req.body.body,
-      rating: req.body.rating,
-      author: req.body.author,
-    });
-    if (!errors.isEmpty()) return res.send(errors.array());
-    jwt.verify(req.token, "secretkey", (err, authData) => {
-      if (err) return res.sendStatus(403);
-      review.save(function (err) {
-        if (err) return next(err);
-        return res.send("Review successfully created");
-      });
-    });
+  async (req, res, next) => {
+    async.parallel(
+      {
+        salon: function (callback) {
+          Salon.findById(req.params.salonid).exec(callback);
+        },
+      },
+      function (err, results) {
+        if (err) {
+          req.flash("error", "Something went wrong");
+          return res.redirect("/explore");
+        }
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+          req.flash("error", "Something went wrong");
+          return res.redirect(`/explore/detail/${results.salon._id}`);
+        }
+        let review = new Review({
+          body: req.body.body,
+          rating: req.body.rating,
+          author: req.user._id,
+        });
+        review.save(function (err) {
+          if (err) {
+            req.flash("error", "Something went wrong");
+            return res.redirect(`/explore/detail/${results.salon._id}`);
+          }
+          results.salon.reviews.push(review);
+          results.salon.save();
+          req.flash("success", "Review successfully posted");
+          return res.redirect(`/explore/detail/${results.salon._id}`);
+        });
+      }
+    );
   },
 ];
 
