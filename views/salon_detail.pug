@@ -55,7 +55,7 @@ block content
                   p.starability-result(data-rating=`${review.rating}`) Rated: #{review.rating} stars 
                   p= review.body 
                   if currentUser && review.author._id.toString() == currentUser._id.toString()
-                    form(action=`/explore/detail/${salon._id}/reviews/${review._id}` method='DELETE') 
+                    form(action=`/explore/detail/${salon._id}/reviews/${review._id}` method='POST') 
                       button.button.button-s.button-danger.border-radius-4px Delete 
   script.
     var salonName = "!{salon.name}"
