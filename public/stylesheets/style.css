@@ -384,6 +384,10 @@ form select {
   justify-content: center;
 }
 
+.salon-detail-container .salon-buttons-container {
+  margin-bottom: 5px;
+}
+
 .salon-detail-container .salon-buttons-container a {
   margin-right: 15px;
 }
@@ -410,6 +414,7 @@ form select {
 .salon-detail-container .reviews-list {
   text-align: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 10rem;
