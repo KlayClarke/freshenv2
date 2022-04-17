@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const salon_controller = require("../controllers/salonController");
+const review_controller = require("../controllers/reviewController");
 const { verifyToken } = require("../middleware/verifyToken");
 
 router.get("/", function (req, res, next) {
@@ -18,6 +19,8 @@ router
   .route("/detail/:salonid")
   .get(salon_controller.salon_detail_get)
   .post(salon_controller.salon_update_post);
+
+router.route("/detail/:salonid/reviews").post(review_controller.review_create);
 
 router
   .route("/detail/:salonid/update")
