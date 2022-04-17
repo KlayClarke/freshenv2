@@ -26,4 +26,14 @@ const SalonSchema = new Schema({
   reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
 });
 
+SalonSchema.post("findOneAndDelete", async function (salon) {
+  if (salon) {
+    await Review.deleteMany({
+      _id: {
+        $in: salon.reviews,
+      },
+    });
+  }
+});
+
 module.exports = mongoose.model("Salon", SalonSchema);
