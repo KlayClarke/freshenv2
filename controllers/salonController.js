@@ -61,8 +61,14 @@ exports.salon_detail_get = (req, res, next) => {
     },
     function (err, results) {
       if (err) return next(err);
+      // sort review by recency
+      let reviewsSorted = [];
+      for (let i = results.salon.reviews.length - 1; i > 0; i--) {
+        reviewsSorted.push(results.salon.reviews[i]);
+      }
       return res.render("salon_detail", {
         salon: results.salon,
+        reviews: reviewsSorted,
       });
     }
   );
