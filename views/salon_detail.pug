@@ -48,6 +48,9 @@ block content
             else 
               h1.lightgray You must login to leave a review
           else 
+            if !currentUser
+              .review-card 
+                h1.lightgray You must login to leave a review
             each review in salon.reviews.slice().reverse()
               .review-card
                 .review-info 
