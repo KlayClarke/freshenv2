@@ -1,4 +1,7 @@
 .env
 TODO
 /node_modules
+
+# The file below is ignored because I am unable to hide or withhold the needed api token (can't access .env in public folder)
+
 /public/javascripts/mapboxCluster.js
