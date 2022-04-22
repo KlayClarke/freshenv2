@@ -4,6 +4,20 @@ const { findLocation } = require("../public/javascripts/findLocation");
 const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 
+exports.get_salon_list = (req, res) => {
+  async.parallel(
+    {
+      salons: function (callback) {
+        Salon.find({}).exec(callback);
+      },
+    },
+    function (err, results) {
+      if (err) return next(err);
+      return res.json({ features: results.salons });
+    }
+  );
+};
+
 // return all salons
 exports.salon_explore_get = (req, res) => {
   async.parallel(
