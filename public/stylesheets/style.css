@@ -608,6 +608,10 @@ button[disabled]:hover {
   color: rgb(1, 102, 255);
 }
 
+.underline {
+  text-decoration: underline;
+}
+
 .blue-glow {
   border: 1px solid rgb(82, 140, 228);
   outline: 5px solid rgba(48, 114, 213, 0.147);
@@ -628,7 +632,7 @@ button[disabled]:hover {
 /* NAV OVERLAY START */
 
 #nav_overlay.show {
-  height: calc(262px - 3rem);
+  height: calc(208px - 3rem);
 }
 
 #nav_overlay.hide {
@@ -696,7 +700,7 @@ button[disabled]:hover {
 /* SCREEN OVERLAY BELOW NAV START */
 
 #screen_overlay.show {
-  height: calc(100% - 262px);
+  height: calc(100% - 208px);
   display: block;
 }
 
