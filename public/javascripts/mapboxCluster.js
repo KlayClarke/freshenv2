@@ -1,6 +1,4 @@
-fetch("https://thawing-reaches-97496.herokuapp.com/api/salons", {
-  mode: "cors",
-})
+fetch("https://thawing-reaches-97496.herokuapp.com/api/salons"  )
   .then((res) => {
     res.json().then((data) => {
       mapboxgl.accessToken = `pk.eyJ1Ijoia2NsYXJlIiwiYSI6ImNsMXNpZWNpbTBiMGkzY3Fja3FteXNtZXUifQ.ooHLmmHP5cmV2MSf2eTheg`;
