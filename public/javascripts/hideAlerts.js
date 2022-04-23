@@ -5,6 +5,6 @@ if (document.querySelector(".alert")) {
     alert.style.transition = "display 0s 1s, opacity 1.5s linear";
     setTimeout(() => {
       alert.style.display = "none";
-    }, 1500);
-  }, 2000);
+    }, 6000);
+  }, 8000);
 }
