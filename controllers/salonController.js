@@ -92,7 +92,7 @@ exports.salon_detail_get = (req, res, next) => {
 
 // get salon creation form
 exports.salon_create_get = (req, res, next) => {
-  res.render("salon_form", {
+  return res.render("salon_form", {
     task: "create",
   });
 };
@@ -114,35 +114,44 @@ exports.salon_create_post = [
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       req.flash("error", "Something went wrong");
-      res.redirect("/explore/create");
+      return res.redirect("back");
     }
-    let salonGeometry = await findLocation(
-      req.body.street_address,
-      req.body.city,
-      req.body.state,
-      req.body.zip_code
-    );
-    let salon = new Salon({
-      name: req.body.name,
-      type: req.body.type,
-      average_price: req.body.average_price,
-      image: req.body.image,
-      street_address: req.body.street_address,
-      city: req.body.city,
-      state: req.body.state,
-      zip_code: req.body.zip_code,
-      geometry: salonGeometry,
-      author: req.user._id,
-      reviews: [],
-    });
-    salon.save(function (err) {
-      if (err) {
-        req.flash("error", "Something went wrong");
-        return res.redirect("/explore/create");
-      }
-      req.flash("success", "Creation successful");
-      return res.redirect(`/explore/detail/${salon._id}`);
-    });
+    if (req.body.name.includes("&") || req.body.street_address.includes("&")) {
+      req.flash("error", "Please use 'and' in place of '&'");
+      return res.redirect("back");
+    }
+    try {
+      let salonGeometry = await findLocation(
+        req.body.street_address,
+        req.body.city,
+        req.body.state,
+        req.body.zip_code
+      );
+      let salon = new Salon({
+        name: req.body.name,
+        type: req.body.type,
+        average_price: req.body.average_price,
+        image: req.body.image,
+        street_address: req.body.street_address,
+        city: req.body.city,
+        state: req.body.state,
+        zip_code: req.body.zip_code,
+        geometry: salonGeometry,
+        author: req.user._id,
+        reviews: [],
+      });
+      salon.save(function (err) {
+        if (err) {
+          req.flash("error", "Something went wrong");
+          return res.redirect("back");
+        }
+        req.flash("success", "Creation successful");
+        return res.redirect(`/explore/detail/${salon._id}`);
+      });
+    } catch (err) {
+      req.flash("error", "Something went wrong");
+      return res.redirect("back");
+    }
   },
 ];
 
@@ -157,9 +166,9 @@ exports.salon_update_get = (req, res) => {
     function (err, results) {
       if (err) {
         req.flash("error", "Something went wrong");
-        res.redirect("back");
+        return res.redirect("back");
       }
-      res.render("salon_form", { salon: results.salon, task: "update" });
+      return res.render("salon_form", { salon: results.salon, task: "update" });
     }
   );
 };
@@ -179,35 +188,47 @@ exports.salon_update_post = [
   body("reviews"),
   async (req, res, next) => {
     const errors = validationResult(req);
-    if (!errors.isEmpty()) return res.send(errors.array());
-    let salonGeometry = await findLocation(
-      req.body.street_address,
-      req.body.city,
-      req.body.state,
-      req.body.zip_code
-    );
-    let salon = new Salon({
-      _id: req.params.salonid,
-      name: req.body.name,
-      type: req.body.type,
-      average_price: req.body.average_price,
-      image: req.body.image,
-      street_address: req.body.street_address,
-      city: req.body.city,
-      state: req.body.state,
-      zip_code: req.body.zip_code,
-      geometry: salonGeometry,
-      author: req.user._id,
-      reviews: [],
-    });
-    Salon.findByIdAndUpdate(salon._id, salon, {}, function (err, thesalon) {
-      if (err) {
-        req.flash("error", "Something went wrong");
-        res.redirect("back");
-      }
-      req.flash("success", "Update successful");
-      res.redirect(`/explore/detail/${salon._id}`);
-    });
+    if (!errors.isEmpty()) {
+      req.flash("error", "Something went wrong");
+      return res.redirect("/");
+    }
+    if (req.body.name.includes("&") || req.body.street_address.includes("&")) {
+      req.flash("error", "Please use 'and' in place of '&'");
+      return res.redirect("back");
+    }
+    try {
+      let salonGeometry = await findLocation(
+        req.body.street_address,
+        req.body.city,
+        req.body.state,
+        req.body.zip_code
+      );
+      let salon = new Salon({
+        _id: req.params.salonid,
+        name: req.body.name,
+        type: req.body.type,
+        average_price: req.body.average_price,
+        image: req.body.image,
+        street_address: req.body.street_address,
+        city: req.body.city,
+        state: req.body.state,
+        zip_code: req.body.zip_code,
+        geometry: salonGeometry,
+        author: req.user._id,
+        reviews: [],
+      });
+      Salon.findByIdAndUpdate(salon._id, salon, {}, function (err, thesalon) {
+        if (err) {
+          req.flash("error", "Something went wrong");
+          return res.redirect("back");
+        }
+        req.flash("success", "Update successful");
+        return res.redirect(`/explore/detail/${salon._id}`);
+      });
+    } catch (err) {
+      req.flash("error", "Something went wrong");
+      return res.redirect("back");
+    }
   },
 ];
 
