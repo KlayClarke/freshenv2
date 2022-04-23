@@ -116,12 +116,11 @@ exports.salon_create_post = [
       req.flash("error", "Something went wrong");
       return res.redirect("back");
     }
-    if (req.body.name.includes("'") || req.body.street_address.includes("'")) {
-      req.flash("error", "Please refrain from using apostrophes (')");
-      return res.redirect("back");
-    }
     if (req.body.name.includes("&") || req.body.street_address.includes("&")) {
-      req.flash("error", "Please use 'and' in place of '&'");
+      req.flash(
+        "error",
+        "Please use 'and' in place of '&' and Please refrain from using apostrophes ( ' )"
+      );
       return res.redirect("back");
     }
     try {
@@ -196,12 +195,11 @@ exports.salon_update_post = [
       req.flash("error", "Something went wrong");
       return res.redirect("/");
     }
-    if (req.body.name.includes("'") || req.body.street_address.includes("'")) {
-      req.flash("error", "Please refrain from using apostrophes (')");
-      return res.redirect("back");
-    }
     if (req.body.name.includes("&") || req.body.street_address.includes("&")) {
-      req.flash("error", "Please use 'and' in place of '&'");
+      req.flash(
+        "error",
+        "Please use 'and' in place of '&' and Please refrain from using apostrophes ( ' )"
+      );
       return res.redirect("back");
     }
     try {
