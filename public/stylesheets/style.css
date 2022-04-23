@@ -377,6 +377,7 @@ form select {
 
 .salon-detail-container .top-section .right {
   padding: 25px;
+  max-width: 25rem;
   text-align: center;
   display: flex;
   flex-direction: column;
