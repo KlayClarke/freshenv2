@@ -32,7 +32,7 @@ const SalonSchema = new Schema(
 );
 
 SalonSchema.virtual("properties.mapboxClusterHTML").get(function () {
-  return `<h3><a href='/explore/detail/${this._id}' class='blue underline'>${this.name}</a></h3>`;
+  return `<a href='/explore/detail/${this._id}'>${this.name}</a>`;
 });
 
 SalonSchema.post("findOneAndDelete", async function (salon) {
