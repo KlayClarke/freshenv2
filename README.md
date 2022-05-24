@@ -8,4 +8,4 @@ This project differs from freshen v1 because it uses (1) regular CSS, (2) mapbox
 
 ## What I Learned
 
-Regular CSS is very difficult to master. I will get better!
+CSS is very difficult to master. I will get better!
